@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            forEach()
+                定义和用法：
+                    forEach() 用于遍历数组的每个元素。
+                    forEach() 不会对空数组进行遍历。
+                    forEach() 不支持 continue 和 break 语句:
+                        可以利用 some() 实现 continue 语句。
+                        可以利用 every() 实现 break 语句。
+                    forEach() 不能遍历数组原型上的属性和自身属性
+                语法：
+                    array.forEach(function(item, index, arr) {})
+                参数说明：
+                    参数为一个函数，函数可以传递三个参数：
+                        函数的第一个参数 item 表示数组的每一项。
+                        函数的第二个参数 index 表示数组的下标。
+                        函数的第三个参数 arr 表示整个数组。
+        */
+        let ages = [16, 18, 20, 22];
+
+        let ages2 = [];
+        ages.forEach(item => {
+            ages2.push(item - 2);
+        });
+
+        console.log(ages2); // [14, 16, 18, 20]
+
+        let arr = [1, 2, 3, 4, 5];
+
+        // continue 实现
+        arr.some(item => {
+            if(item === 3) return;
+            console.log(item);
+            // 1
+            // 2
+            // 4
+            // 5
+        });
+
+        // break 实现
+        arr.every(item => {
+            console.log(item);
+            // 1
+            // 2
+            // 3
+            return item !== 3;
+        });
+
+        Array.prototype.first = 'FRIST';
+        let fruits = ['Apple', 'Banana', 'Orange', 'Mango'];
+        fruits.descript = 'My favorite fruits';
+        fruits.forEach(item => {
+            console.log(item);
+        })
+        // Apple
+        // Banana
+        // Orange
+        // Mango
+    </script>
+</body>
+</html>

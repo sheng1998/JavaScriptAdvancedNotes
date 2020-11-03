@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        match() 方法
+            1、如果正则表达式中含有/g,也就是说正则是全局匹配的，则返回的查找的字符串的数组
+                console.log(str.match(/a/g)) // ['a', 'a']
+            2、如果正则表达式中不带有 g 标记，则它以数组的形式返回第一个匹配项，
+            其中包含分组和属性 index（匹配项的位置）、input（输入字符串，等于 str）：
+                0: "JavaScript" // 匹配的字符串
+                1: "Script" // 第一个分组
+                index: 7 // 匹配字符串的起始下标
+                input: "I love JavaScript" // 输入的字符串，相当于 str
+                groups: undefined // 命名分组数组
+            3、如果匹配不成功会返回 null
+    -->
+    <script>
+        let str = "I love JavaScript"
+        console.log(str.match(/love/g)) // ['love']
+        console.log(str.match(/a/g)) // ['a', 'a']
+        console.log(str.match(/Java(Script)/)) // ["JavaScript", "Script", index: 7, input: "I love JavaScript", groups: undefined]
+        console.log(str.match(/Ja(va)(Script)/)) // ["JavaScript", "va", "Script", index: 7, input: "I love JavaScript", groups: undefined]
+    </script>
+</body>
+</html>

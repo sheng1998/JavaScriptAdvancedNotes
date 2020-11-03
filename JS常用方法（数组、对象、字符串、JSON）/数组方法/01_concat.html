@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            concat()
+                语法：
+                    array1.concat(array2,array3,...,arrayX)
+                参数可以是值类型，也可以是数组，
+                    如果参数是一个数组，那么其中的所有元素都会被复制。否则，将复制参数本身。
+                    如果类似数组的对象具有 Symbol.isConcatSpreadable 属性，那么它就会被 concat 当作一个数组来处理：此对象中的元素将被添加
+                使用 concat 复制数组是深拷贝
+                该方法用于连接两个或多个数组。
+                该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。
+        */
+        let a = ["A", "B"];
+        let b = ["C"];
+        let c = {
+            0: 'D',
+            [Symbol.isConcatSpreadable]: true,
+            length: 1
+        }
+        let d = a.concat(b, c, 'E', Symbol(1));
+
+        console.log(d); // ["A", "B", "C", "D", "E", Symbol(1)]
+    </script>
+</body>
+</html>

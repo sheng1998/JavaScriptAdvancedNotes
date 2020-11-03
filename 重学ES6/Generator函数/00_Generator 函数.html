@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function* myFun() {
+            yield '111'
+            yield '222'
+            yield '333'
+            return '444'
+        }
+
+        let generator = myFun()
+
+        for(let item of myFun()) { // for of 可以遍历 Generator 函数，不会返回 return 里面的函数表达式
+            console.log(item)
+            // 111
+            // 222
+            // 333
+        }
+
+        console.log(generator.next()) // {value: "111", done: false}
+        console.log(generator.next()) // {value: "222", done: false}
+        console.log(generator.next()) // {value: "333", done: false}
+        console.log(generator.next()) // {value: "444", done: true}
+        console.log(generator.next()) // {value: undefined, done: true}
+
+        function* add() {
+            yield 1 + 2 //不会立即执行加法，只有等调用 next 函数时才会计算结果。
+            yield 2 + 3
+            return 3 + 4
+        }
+
+        let addd = add();
+
+        console.log(addd.next())
+        console.log(addd.next())
+        console.log(addd.next())
+        console.log(addd.next())
+
+        function* log() {
+            console.log('你好') // 不会立即执行，需要等到调用 next 方法时才会输出 '你好'
+        }
+
+        console.log(log())
+        console.log(log().next())
+    </script>
+</body>
+</html>

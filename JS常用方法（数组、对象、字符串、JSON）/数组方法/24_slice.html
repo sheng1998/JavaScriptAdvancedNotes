@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            slice()
+                注意：
+                    slice 不会修改原数组，只会返回一个浅复制了原数组中的元素的一个新数组。原数组的元素会按照下述规则拷贝：
+                        如果该元素是个对象引用 （不是实际的对象），slice 会拷贝这个对象引用到新的数组里。两个对象引用都引用了同一个对象。如果被引用的对象发生改变，则新的和原来的数组中的这个元素也会发生改变。
+                        对于字符串、数字及布尔值来说（不是 String、Number 或者 Boolean 对象），slice 会拷贝这些值到新的数组里。在别的数组里修改这些字符串或数字或是布尔值，将不会影响另一个数组。如果向两个数组任一中添加了新元素，则另一个不会受到影响。
+                定义和用法：
+                    该方法会返回一个新数组，新组的元素来源于原数组被提取的部分的元素。
+                    slice()方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。
+                    slice() 不会改变原数组。
+                语法：
+                    array.slice(start, end)
+                参数说明：
+                    第一个参数 start 可选，表示开始提取的下标，默认为 0。
+                        如果 start 是负数，则 start = start + array.length, 如果计算结果还是负数，则 start = 0。
+                    第二个参数 end 可选，表示结束提取的下标， 默认为 array.length。
+                        如果 end 是负数，则 end = end + array.length, 如果计算结果还是负数，则 end = 0, 返回空数组[]。
+                    如果计算之后 end >= start 或者 end 为负数，则返回空数组[]。
+        */
+        let names = ['李白', '韩信', '露娜', '赵云', '哪吒'];
+
+        let names2 = names.slice(0, 2); // ["李白", "韩信"]
+
+        let names3 = names.slice(); // ["李白", "韩信", "露娜", "赵云", "哪吒"]
+
+        let names4 = names.slice(-2); // ["赵云", "哪吒"]
+        // 以上 names4 相当于 names.slice(-2 + 5, 5) =》names.slice(3, 5)
+
+        let names5 = names.slice(-2, 5); // ["赵云", "哪吒"]
+        // 以上 names5 相当于 names.slice(-2 + 5, 5) =》names.slice(3, 5)
+
+        let names6 = names.slice(-8, 5); // ["李白", "韩信", "露娜", "赵云", "哪吒"]
+        // 以上 names6 相当于 names.slice(-8 + 5, 5) =》names.slice(-3, 5) =》names.slice(0, 5)
+
+        let names7 = names.slice(3, 2); // []
+
+        let names8 = names.slice(-3, -2); // ["露娜"]
+        // 以上 names8 相当于 names.slice(-3 + 5, -2 + 5) =》names.slice(2, 3)
+
+        let names9 = names.slice(-3, -6); // []
+        // 以上 names6 相当于 names.slice(-3 + 5, -6 + 5) =》names.slice(2, -1)
+
+        console.log(names, names2, names3);
+        console.log(names4, names5, names6);
+        console.log(names7, names8, names9);
+    </script>
+</body>
+</html>

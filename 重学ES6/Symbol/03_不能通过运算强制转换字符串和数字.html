@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let sy1 = Symbol(2020);
+        // let num = sy1 + 1; //  Uncaught TypeError: Cannot convert a Symbol value to a number
+        // let number = Number(sy1); //  Uncaught TypeError: Cannot convert a Symbol value to a number
+
+        let sy2 = Symbol('sheng');
+        // let str = sy2 + ''; // Uncaught TypeError: Cannot convert a Symbol value to a string
+        let string = String(sy2);
+        console.log(string); // Symbol(sheng)
+
+    </script>
+</body>
+</html>

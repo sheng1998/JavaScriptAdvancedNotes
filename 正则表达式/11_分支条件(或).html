@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        正则表达式里的分支条件指的是有几种规则，如果满足其中任意一种规则都应该当成匹配，具体方法是用 | 把不同的规则分隔开
+     -->
+    <script>
+        let reg = /ab|bb/g
+        console.log('absbaabbac'.replace(reg, 'A')) // AsbaAbac
+    </script>
+</body>
+</html>

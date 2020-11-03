@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            Lili: {grade: 60, gender: 'female'},
+            [Symbol('Lily')]: {grade: 60, gender: 'female'},
+            [Symbol('nina')]: {grade: 80, gender: 'female'},
+            [Symbol('nina')]: {grade: 90, gender: 'female'}
+        }
+
+        for (const key in obj) {
+            console.log(key); // Lili
+        }
+
+        const sy = Object.getOwnPropertySymbols(obj);
+        console.log(sy); // [Symbol(Lily), Symbol(nina), Symbol(nina)]
+    </script>
+</body>
+</html>

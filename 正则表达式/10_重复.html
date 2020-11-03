@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        *：重复 0 次或更多次,相当于{0,}
+
+        +：重复一次或更多次,相当于{1,}
+
+        ?：重复 0 次或 1 次,相当于{0,1}
+
+        {n}：重复 n 次
+
+        {n,}：重复 n 次或多次
+
+        {n,m}：重复 n 次到 m 次
+    -->
+    <script>
+        let reg1 = /a*b/ // a重复 0 次或更多次,相当于let reg1 = /a{0,}b/
+        console.log('aaabb'.replace(reg1, 'A')) // Ab
+        console.log('sdfbb'.replace(reg1, 'A')) // sdfAb
+        
+        let reg2 = /a+b/ // a重复一次或更多次,相当于let reg2 = /a{1,}b/
+        console.log('aaabb'.replace(reg2, 'A')) // Ab
+        console.log('sdfbb'.replace(reg2, 'A')) // sdfbb
+
+        let reg3 = /a?b/ // a重复 0 次或 1 次,相当于let reg3 = /a{0,1}b/
+        console.log('aaabb'.replace(reg3, 'A')) // aaAb
+        console.log('sdfbb'.replace(reg3, 'A')) // sdfAb
+
+        let reg4 = /a{2}b/ // a重复 2 次
+        console.log('aaabb'.replace(reg4, 'A'),0) // aAb
+        console.log('sdfbb'.replace(reg4, 'A')) // sdfbb
+
+        let reg5 = /a{2,}b/ // a重复 2 次或多次
+        console.log('aaabb'.replace(reg5, 'A')) // Ab
+        console.log('sdfbb'.replace(reg5, 'A')) // sdfbb
+
+        let reg6 = /a{2,4}b/ // a重复 2 次到 4 次
+        console.log('aaaaabb'.replace(reg6, 'A')) // aAb
+        console.log('sdfbb'.replace(reg6, 'A')) // sdfbb
+    </script>
+</body>
+</html>

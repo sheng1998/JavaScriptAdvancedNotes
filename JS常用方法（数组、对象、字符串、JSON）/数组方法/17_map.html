@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            map()
+                定义和用法：
+                    该方法返回一个新数组，数组中的元素为原始数组调用函数处理后的返回值。
+                    该方法会按照原来数组元素顺序依次处理元素。
+                    map() 不会对空数组进行检测。
+                    map() 不会改变原始数组。
+                语法：
+                    array.map(function(item, index, arr) {return condition;})
+                参数说明：
+                    参数为一个函数，函数可以传递三个参数：
+                        函数的第一个参数 item 表示数组的每一项。
+                        函数的第二个参数 index 表示数组的下标。
+                        函数的第三个参数 arr 表示整个数组。
+        */
+        let ages = [16, 18, 20, 22];
+
+        let checkAge = ages.map(age => {
+            return age *2 -16;
+        }); // [16, 20, 24, 28]
+
+        console.log(checkAge);
+
+        let res = [
+            {
+                name: 'sheng',
+                sex: 1,
+                age: 22,
+
+            }, {
+                name: 'ta',
+                age: 20
+            }
+        ];
+        let result = res.map(item => {
+            return {
+                title: item.name,
+                sex: item.sex === 1 ? '男' : item.sex === 0 ? '女' : '保密',
+                age: item.age
+            }
+        });
+        console.log(result);
+        // [
+        //  {title: "sheng", sex: "男", age: 22},
+        //  {title: "ta", sex: "保密", age: 20}
+        // ]
+    </script>
+</body>
+</html>

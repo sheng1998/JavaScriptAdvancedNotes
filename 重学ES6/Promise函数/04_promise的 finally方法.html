@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('你好，我叫小庄。');
+            }, 2000);
+        });
+
+        p
+            .then(data => {
+                console.log(data);
+            })
+            .catch(err => {
+                console.error(err)
+            })
+            .finally(() => {
+                console.log('finally');
+            })
+    </script>
+</body>
+</html>

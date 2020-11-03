@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        \w：匹配字母或数字或下划线，相当于[0-9a-zA-Z_]
+        \W：匹配非字母或数字或下划线
+    -->
+    <script>
+        let reg1 = /\w/g
+        let reg2 = /\W/g
+        console.log('1a三—‘_%观感21dg'.replace(reg1, 'A')) // AA三—‘A%观感AAAA
+        console.log('1a三—‘_%观感21dg'.replace(reg2, 'A')) // 1aAAA_AAA21dg
+    </script>
+</body>
+</html>

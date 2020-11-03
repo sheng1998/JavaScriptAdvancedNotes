@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(name, sex, age) {
+            this.name = name;
+            this.sex = sex;
+            this.age = age;
+            this.remarks = function() {
+                console.log('你好')
+            }
+        }
+
+
+        // 通过prototype添加的属性是该构造函数所有实例对象都共有的。
+        Person.prototype.fn = function() {
+            console.log('你好呀！');
+        }
+
+        let tom = new Person('tom', '男', '20');
+        let timi = new Person('timi', '女', '20');
+
+        console.log(tom.remarks === timi.remarks); // false
+        console.log(tom.age === timi.age); // true
+        console.log(tom.fn === timi.fn); // true
+    </script>
+</body>
+</html>

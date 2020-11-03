@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            splice()
+                定义和用法：
+                    该方法可以用于添加、删除、替换数组中的元素。
+                    splice() 会改变原始数组。
+                语法：
+                    array.splice(index,howmany,item1,.....,itemX)
+                参数说明：
+                    第一个参数 index 必需，规定从何处开始添加或者删除。
+                        如果 index 为负数，则 index = index + array.length, 如果计算结果还是负数，则 index = 0。
+                    第二个参数 howmany 可选，规定应该删除多少个元素，可以取 0(表示不删除元素), 负数无效相当于 0, 默认为 array.length - index 。
+                    第三个到第 n 个参数 可选，表示要添加的元素。
+        */
+        let ages = [16, 17, 18, 19, 20];
+        let arr = ages.splice(1, 2);
+        console.log(arr); // [17, 18]
+        console.log(ages); // [16, 19, 20]
+
+        let arr2 = [1, 2, 3, 4];
+        arr2.splice(-10, 1, 5, 6);
+        // 上面一行相当于：arr2.splice(-10 + 5, 1, 5, 6) =》arr2.splice(-5, 1, 5, 6)
+        console.log(arr2); // [5, 6, 2, 3, 4]
+    </script>
+</body>
+</html>

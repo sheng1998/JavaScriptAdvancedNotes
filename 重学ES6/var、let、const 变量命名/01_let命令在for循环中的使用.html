@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = []
+        for(var i=0;i<5;i++) {
+            a[i]= function() {
+                console.log(i)
+            }
+        }
+        a[2]() // 5
+        console.log(i) // 5
+
+        let b = []
+        for(let j=0;j<5;j++) {
+            b[j]= function() {
+                console.log(j)
+            }
+        }
+        b[2]() // 2
+        console.log(j) // j is not defined
+    </script>
+</body>
+</html>

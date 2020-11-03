@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj1 = {
+            name: 'sheng',
+            toString: function() {
+                return 'obj 的 toString()'
+            }
+        }
+        let sy1 = Symbol(obj1);
+
+        console.log(sy1); // Symbol(obj 的 toString())
+
+
+        let obj2 = {
+            name: 'sheng'
+        }
+        let sy2 = Symbol(obj2);
+
+        console.log(sy2); // Symbol([object Object])
+    </script>
+</body>
+</html>

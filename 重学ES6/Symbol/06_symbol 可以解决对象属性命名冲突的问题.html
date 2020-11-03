@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj1 = {
+            [Symbol('sheng')]: 'sheng1',
+            [Symbol('sheng')]: 'sheng2',
+            [Symbol('sheng')]: 'sheng3'
+        }
+        console.log(obj1); // {Symbol(sheng): "sheng1", Symbol(sheng): "sheng2", Symbol(sheng): "sheng3"}
+
+        let obj2 = {
+            sheng: 'sheng1',
+            sheng: 'sheng2',
+            sheng: 'sheng3'
+        }
+        console.log(obj2); // {sheng: "sheng3"}
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(name, sex, age) {
+            this.name = name;
+            this.sex = sex;
+            this.age = age;
+            this.remarks = function() {
+                console.log(`${name}是个${sex}生,今年${age}岁`)
+            }
+        }
+
+        let tom = new Person('tom', '男', '20');
+        let timi = new Person('timi', '女', '18');
+
+        console.log(tom);
+        tom.remarks();
+        // obj的constructor属性，指向它们的构造函数。
+        console.log(tom.constructor === Person); // true
+        console.log(tom.constructor === Function); // false
+        console.log(Person.constructor === Function); // true
+        console.log(Function.constructor); // Function() { [native code] }
+        console.log(Object.constructor); // Function() { [native code] }
+        console.log(Object.constructor === Function); // true
+    </script>
+</body>
+</html>

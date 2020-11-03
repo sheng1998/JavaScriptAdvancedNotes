@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const inventory = [
+            {name: 'apple', quantity: 2},
+            {name: 'banana', quantity: 0},
+            {name: 'orange', quantity: 5}
+        ]
+
+        let falg = inventory.every(fruit => fruit.quantity > 0)
+        console.log(falg) // false
+
+        let falg1 = inventory.every(fruit => {
+            console.log(fruit)
+            // {name: "apple", quantity: 2}
+            // {name: "banana", quantity: 0}
+            return fruit.quantity > 0
+        })
+        console.log(falg1) // false
+    </script>
+</body>
+</html>

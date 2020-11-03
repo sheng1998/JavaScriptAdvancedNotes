@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据类型</title>
+</head>
+<body>
+    <!-- 
+        1. 分类
+            * 基本数据（值）类型
+                * String: 任意字符串
+                * Number: 任意数字
+                * boolean: true/false
+                * undefinded: undefinded
+                * null: null
+            * 对象（引用）类型
+                * Object: 任意对象
+                * Function： 一种特别的对象（可以执行）
+                * Array： 一种特别的对象（数值下标，内部数据是有序的）
+
+        2. 判断
+            * typeof
+                * typeof 返回数据类型的字符串表达
+                ```javaScript
+                    typeof('xiaozhuang') // "string"
+                ```
+            * instanceof
+            * ===
+     -->
+    <script>
+        // 1. 基本
+        // typeof 返回数据类型的字符串表达
+        var a;
+        console.log(a, typeof a, typeof a === 'undefined', a === undefined); // undefined "undefined" true true
+        console.log(undefined === undefined); // true
+
+        a = 3;
+        console.log(typeof a === 'number'); // true
+        console.log(a === 1); // false
+
+        a = 'xiaozhuang';
+        console.log(typeof a === 'string'); // true
+
+        a = true;
+        console.log(typeof a === 'boolean'); // true
+
+        a = null;
+        console.log(typeof a, typeof a === 'null', a === null); // object false true
+    
+        console.log('-------------------------------');
+        
+        // 2.对象
+        var b1 = {
+            b2: [1, 'xiaozhuang', console.log],
+            b3: function () {
+                console.log('b3');
+                return function () {
+                    return 'f-xiaozhuang';
+                }
+            }
+        }
+
+        console.log(b1 instanceof Object, b1 instanceof Array); // true false
+
+        // b1.b2 是一个数组，而数组是一种特殊的对象， 因此 b1.b2 是数组的实例化对象，也是对象的实例
+        console.log(b1.b2 instanceof Array, b1.b2 instanceof Object); // true true
+
+                // b1.b3 是一个函数，而函数是一种特殊的对象， 因此 b1.b3 是函数的实例化对象，也是对象的实例
+        console.log(b1.b3 instanceof Function, b1.b3 instanceof Object); // true true
+
+        console.log(typeof b1.b3 === 'function'); // true
+        b1.b3(); // b3
+        console.log(b1.b3()()) // b3 换行 f-xiaozhuang
+
+        // var a = {}
+        // var b = [0,1,2]
+        // console.log(typeof(null)) // object
+        // console.log(typeof(a)) // object
+        // console.log(typeof(b)) // object
+    </script>
+</body>
+</html>

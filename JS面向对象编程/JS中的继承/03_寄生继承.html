@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 该方法只能继承父类的原型链上的属性和方法 -->
+    <script>
+        // 定义父类
+        function Parents(name) {
+            this.name = name;
+        }
+        Parents.prototype.fun1 = function () {
+            return 'parents';
+        }
+        Parents.prototype[Symbol(2020)] = Symbol(2020);
+
+        // 定义子类
+        function Child(age) {
+            this.age = age;
+        }
+        Child.prototype.fun2 = function () {
+            return 'child';
+        }
+
+        // 下面两个语句是组合继承的实现
+        Child.prototype = Object.create(Parents.prototype); // 这个语句可以通过创建新对象的方法实现
+        Child.prototype.constructor = Child;
+
+        let child = new Child(22);
+        console.log(child);
+    </script>
+    <script>
+        // Object.create = function(obj) {
+        //     function Fn() {};
+        //     Fn.prototype = obj;
+        //     return new Fn();
+        // }
+    </script>
+</body>
+</html>

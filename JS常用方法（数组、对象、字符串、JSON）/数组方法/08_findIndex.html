@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            findIndex()
+                定义和用法：
+                    该方法用于查找数组中满足条件的第一个元素所在位置。
+                    findIndex() 为数组的每一个元素都调用一次函数执行：
+                        当查找到第一个满足条件的元素时，返回该元素所在位置的下标，并停止执行剩下元素调用的函数。
+                        如果没有满足条件的元素就返回 -1。
+                    findIndex() 不会对空数组进行检测。
+                    findIndex() 不会改变原始数组的值。
+                语法：
+                    array.findIndex(function(item, index, arr) return condition;)
+                参数说明：
+                    参数为一个函数，函数可以传递三个参数：
+                        函数的第一个参数 item 表示数组的每一项。
+                        函数的第二个参数 index 表示数组的下标。
+                        函数的第三个参数 arr 表示整个数组。
+        */
+        let ages = [16, 18, 20, 21, 22];
+        let checkAge = ages.findIndex(age => age > 16); // 1
+        console.log(checkAge);
+    </script>
+</body>
+</html>

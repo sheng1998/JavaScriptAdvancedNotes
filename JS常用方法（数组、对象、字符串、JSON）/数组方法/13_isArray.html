@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            isArray()
+                注意：这个不是数组原型上的方法。
+                定义和用法：
+                    该方法用于判断一个对象是否为数组。如果是返回 true，否则返回 false。
+                语法：
+                    Array.isArray(obj)
+                参数说明：
+                    第一个参数 obj 必需，表示需要判断的对象。
+        */
+        let fruits = ["Banana", "Orange", "Apple", "Mango"];
+        let name = '李白';
+        Array.isArray(fruits); // true
+        Array.isArray(name); // false
+        console.log(Array.isArray(fruits), Array.isArray(name));
+    </script>
+</body>
+</html>

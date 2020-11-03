@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        * 零宽：只匹配位置，在匹配过程中，不占用字符，所以被称为零宽
+        * 先行：正则引擎在扫描字符的时候，从左往右扫描，匹配扫描指针未扫描过的字符，先于指针，故称先行
+        * 后行：匹配指针已扫描过的字符，后于指针到达该字符，故称后行，即产生回溯
+        * 正向：即匹配括号中的表达式
+        * 负向：不匹配括号中的表达式
+     -->
+    <script>
+        let reg1 = /\d+(?=元)/ // 零宽正向先行断言,表示匹配后面直接与(元)相接的数字
+        console.log('2000元'.replace(reg1, 'A')) // A元
+        console.log('2000美元'.replace(reg1, 'A')) // 2000美元
+
+        let reg2 = /\d+(?!元)/ // 零宽负向先行断言,表示匹配后面没有直接与(元)相接的数字
+        console.log('2000元'.replace(reg2, 'A')) // A0元
+        console.log('2000美元'.replace(reg2, 'A')) // A美元
+
+        let reg3 = /\d+(?!元|\d)/ // 零宽负向先行断言,表示匹配后面要么不是(元)，要么不是数字的数字
+        console.log('2000元'.replace(reg3, 'A')) // 2000元
+        console.log('2000美元'.replace(reg3, 'A')) // A美元
+
+        console.log('****************************')
+
+        let reg4= /(?<=￥)\d+/ // 零宽正向后行断言,表示匹配前面直接与(￥)相接的数字
+        console.log('￥2000'.replace(reg4, 'A')) // ￥A
+        console.log('$2000'.replace(reg4, 'A')) // $2000
+
+        let reg5 = /(?<!￥)\d+/ // 零宽负向后行断言,表示匹配前面没有直接与(￥)相接的数字
+        console.log('￥2000'.replace(reg5, 'A')) // ￥2A
+        console.log('$2000'.replace(reg5, 'A')) // $A
+
+        let reg6 = /(?<!￥|\d)\d+/ // 零宽负向后行断言,表示匹配前面要么不是(￥)，要么不是数字的数字
+        console.log('￥2000'.replace(reg6, 'A')) // ￥2000
+        console.log('$2000'.replace(reg6, 'A')) // $A
+    </script>
+</body>
+</html>

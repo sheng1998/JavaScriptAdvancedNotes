@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        exec() 方法如果匹配成功，会返回一个 数组。这个数组除了数字索引外，还有一些其他的属性。如果匹配失败，会返回 null。
+        返回值：
+            1、matches[n]，n为索引值。matches[0] 是与整个模式匹配的字符串。如果模式中有捕获组（圆括号括起来的），matches[1] 到 matches[len-1] 为捕获组匹配到的字符串。如果捕获组有嵌套的情况，顺序为深度优先遍历的顺序。
+            2、input：该属性为被传入的字符串，等于 text。
+            3、index：整个模式匹配的字符串位于传入字符串的位置，等同于 text.indexOf(matches[0])
+            4、groups：具名组对象。ES2018 引入了 具名组匹配，支持如 /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/, 匹配成功后， matches.groups.year 的值就是 matches[1]。。
+     -->
+    <script>
+        let reg0 = /(?<y>\d{4})-(?<m>\d{2})-(?<d>\d{2})/
+        console.log(reg0.exec('2020.09.17')) // null
+        
+        let reg1 = /(?<y>\d{4})-(?<m>\d{2})-(?<d>\d{2})/
+        console.log(reg1.exec('2020-09-17'))
+        // ["2020-09-17", "2020", "09", "17", index: 0, input: "2020-09-17", groups: {…}]
+
+        let reg2 = /(?<y>\d{4})-(?<m>\d{2})-(?<d>\d(?<a>\w(?<b>\d)){2})/
+        console.log(reg2.exec('2020-09-17123'))
+        // ["2020-09-17123", "2020", "09", "17123", "23", "3", index: 0, input: "2020-09-17123", groups: {…}]
+    </script>
+</body>
+</html>

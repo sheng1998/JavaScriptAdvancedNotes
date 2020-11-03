@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 这种继承只能继承父类原型链上的公有属性和方法，而且不可以继承属性名或者方法名为Symbol类型的属性和方法。 -->
+    <script>
+        function Parents(name) {
+            this.name = name;
+        }
+        Parents.prototype.fun1 = function() {
+            return 'parents';
+        }
+        Parents.prototype[Symbol(2020)] = Symbol(2020);
+
+        function Child(age) {
+            this.age = age;
+        }
+        Child.prototype.fun2 = function() {
+            return 'child';
+        }
+
+        for (const key in Parents.prototype) {
+            Child.prototype[key] = Parents.prototype[key];
+        }
+
+        let child = new Child(22);
+        console.log(child)
+    </script>
+</body>
+</html>

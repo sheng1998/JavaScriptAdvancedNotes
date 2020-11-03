@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        []：匹配中括号里面的任意字符
+        [0-9]：相当于\d，[^0-9]：相当于\D
+        [0-9a-zA-Z_]：相当于\w，[^0-9a-zA-Z_]：相当于\W
+        [\u4e00-\u9fa5]：匹配所有汉字
+    -->
+    <script>
+        let reg1 = /[ab12]/g // 匹配a、b、1、2任意一个
+        let reg2 = /[0-9]/g // 匹配 0-9 之间的数字(所有数字),相当于\d
+        let reg3 = /[a-zA-Z]/g // 匹配 a-b和A-Z 之间的所有字母
+        let reg4 = /[\u4e00-\u9fa5]/g // 匹配所有汉字
+        console.log('fegab21'.replace(reg1, 'A')) // fegAAAA
+        console.log('fegab21'.replace(reg2, 'A')) // fegabAA
+        console.log('feSD21'.replace(reg3, 'A')) // AAAA21
+        console.log('你好吗123abc'.replace(reg4, 'A')) // AAA123abc
+    </script>
+</body>
+</html>

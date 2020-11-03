@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            for in 会遍历数组上面的非数字属性,可以终止遍历
+        */
+        Array.prototype.first = 'FRIST'
+        let fruits = ['Apple', 'Banana', 'Orange', 'Mango']
+
+        fruits.descript = 'My favorite fruits'
+
+        for(let index in fruits) {
+            // console.log(index)
+            // if(fruits[index] === 'Banana') break;
+            if(fruits[index] === 'Banana') continue;
+            console.log(fruits[index])
+        }
+        // Apple
+        // Orange
+        // Mango
+        // My favorite fruits
+        // FRIST
+    </script>
+</body>
+</html>

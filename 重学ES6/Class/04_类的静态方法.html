@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class User {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            fun() {
+                return '我是可以被继承的方法 fun';
+            }
+
+            static myFun() {
+                return '我是不可以被继承的方法 myFun';
+            }
+        }
+
+        let user = new User('sheng', 20);
+        console.log(user.fun()); // 我是可以被继承的方法 fun
+        // console.log(user.myFun()); // Uncaught TypeError: user.myFun is not a function
+
+        console.log(User.myFun()); // 我是不可以被继承的方法 myFun
+    </script>
+</body>
+</html>

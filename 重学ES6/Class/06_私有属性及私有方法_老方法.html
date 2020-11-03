@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let myFun = Symbol('myFun');
+        class User {
+            myFun = this[myFun]();
+            _foo = this._fun();
+            [myFun]() {
+                return '这是私有方法 myFun';
+            }
+            _fun() {
+                return '这是私有方法 _fun';
+            }
+            myBar(baz) {
+                return bar.call(this, baz);
+            }
+        }
+
+        function bar(baz) {
+            return '我是函数 bar';
+        }
+
+        console.log(Reflect.ownKeys(User.prototype)); // ["constructor", "_fun", "myBar", Symbol(myFun)]
+
+        let user = new User();
+        console.log(user.myFun); // 这是私有方法 myFun
+        console.log(user._foo); // 这是私有方法 _fun
+        console.log(user._fun()); // 这是私有方法 _fun
+        console.log(user.myBar()); // 我是函数 bar
+        // console.log(user.bar()); // Uncaught TypeError: user.bar is not a function
+    </script>
+</body>
+</html>

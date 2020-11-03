@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            fill()
+                定义和用法：
+                    该方法用一个固定值替换数组中的元素。
+                    该方法会改变数组。
+                语法：
+                    array.fill(value, start, end)
+                参数说明：
+                    第一个参数 value，必须，表示填充的值。
+                    第二个参数 start，可选，表示开始填充的下标，默认为 0。
+                    第三个参数 end，可选，表示停止填充的下标，默认为 array.length。
+        */
+        let names = ['李白', '韩信', '橘右京', '孙悟空'];
+        names.fill('露娜'); // ["露娜", "露娜", "露娜", "露娜"]
+
+        let fruits = ['橘子', '梨子', '苹果', '草莓']
+        fruits.fill('西瓜', 1, 3); // ["橘子", "西瓜", "西瓜", "草莓"]
+
+        console.log(fruits);
+    </script>
+</body>
+</html>

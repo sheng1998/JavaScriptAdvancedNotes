@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            lastIndexOf()
+                定义和用法：
+                    该方法用于查找指定元素在数组中第一次出现的位置。
+                    该方法从尾到头进行检索，查找到需要的第一个元素就会返回该元素的下标，并停止继续向前查找。
+                    如果没有找到指定元素就返回 -1。
+                语法：
+                    array.lastIndexOf(searchElement, start)
+                参数说明：
+                    第一个参数 searchElement 必需，表示需要查找的元素。
+                    第二个参数 start 可选，默认值为 array.length - 1，表示从该处开始向前检索，合法取值范围为 0 到 array.length - 1。
+                        如果 start 的值大于数组的长度，则默认从 array.length - 1 处开始向前检索。
+                        如果 start 的值是负数，则索引值为 start + array.length。如果计算结果还是负数，则直接返回 -1。
+        */
+        let fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+        let index = fruits.lastIndexOf('Orange'); // 1
+        let index1 = fruits.lastIndexOf('Orange', 8); // 1
+        let index2 = fruits.lastIndexOf('Orange', -3); // 1
+        let index3 = fruits.lastIndexOf('Banana', 2); // 0
+        let index4 = fruits.lastIndexOf('Banana', -8); // -1
+        let index5 = fruits.lastIndexOf('Mango', 3); // 3
+
+        console.log(index, index1); 
+        console.log(index2, index3, index4, index5);
+    </script>
+</body>
+</html>

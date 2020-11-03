@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class User {
+            static myName = 'sheng';
+        }
+
+        let Lili = new User();
+        console.log(User.name); // User
+        console.log(Lili.name); // undefined
+        console.log(User.myName); // sheng
+        console.log(Lili.myName); // undefined
+
+        class Students{}
+        Students.myName = 'student';
+
+        let student = new Students();
+        console.log(student.myName); // undefined
+        console.log(Students.myName); // student
+    </script>
+</body>
+</html>

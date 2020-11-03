@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON.stringify</title>
+</head>
+<body>
+    <!-- 
+        JSON.stringify 的作用是把一个 JS 对象转为 JSON
+     -->
+    <script>
+        let obj = {
+            name: 'sheng',
+            age: 20
+        }
+        console.log(obj) // {name: "sheng", age: 20}
+        console.log(JSON.stringify(obj)) // {"name":"sheng","age":20}
+    </script>
+</body>
+</html>

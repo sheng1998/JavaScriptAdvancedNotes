@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            forEach 不会遍历数组上面的非数字属性,不可以终止遍历
+        */
+        Array.prototype.first = 'FRIST'
+        let fruits = ['Apple', 'Banana', 'Orange', 'Mango']
+
+        fruits.descript = 'My favorite fruits'
+
+        fruits.forEach(item => {
+            // if(item === 'Banana') break; // Uncaught SyntaxError: Illegal break statement
+            console.log(item)
+        })
+        // Apple
+        // Banana
+        // Orange
+        // Mango
+    </script>
+</body>
+</html>

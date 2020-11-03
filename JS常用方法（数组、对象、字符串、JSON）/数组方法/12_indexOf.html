@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            indexOf()
+                定义和用法：
+                    该方法用于查找指定元素在数组中第一次出现的位置。
+                    该方法从头到尾进行检索，查找到需要的第一个元素就会返回该元素的下标，并停止继续向后查找。
+                    如果没有找到指定元素就返回 -1。
+                语法：
+                    array.indexOf(searchElement, start)
+                参数说明：
+                    第一个参数 searchElement 必需，表示需要查找的元素。
+                    第二个参数 start 可选，默认值为 0，表示开始检索的下标，合法取值范围为 0 到 array.length - 1。
+                        如果 start 的值大于数组的长度，则不会检索数组，并返回 -1。
+                        如果 start 的值是负数，则索引值为 start + array.length。如果计算结果还是负数，则从 0 开始检索。
+        */
+        let fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+        let index = fruits.indexOf('Orange'); // 1
+        let index1 = fruits.indexOf('Orange1'); // -1
+        let index2 = fruits.indexOf('Orange', -3); // 1
+        let index3 = fruits.indexOf('Orange', 1); // 1
+
+        console.log(index2); 
+        console.log(index3); 
+    </script>
+</body>
+</html>

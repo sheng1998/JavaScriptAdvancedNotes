@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Animal {
+            constructor(name) {
+                this.name = name;
+            }
+        }
+
+        class Dog extends Animal {
+            constructor(name, age) {
+                super(name); // 调用了父类的 construtor(name)
+                this.age = age;
+            }
+        }
+
+        var dog = new Dog('lucky', 2);
+        console.log(dog);
+    </script>
+</body>
+</html>

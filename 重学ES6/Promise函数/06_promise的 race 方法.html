@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            Promise.race()方法同样是将多个 Promise 实例，包装成一个新的 Promise 实例。
+            const p = Promise.race([p1, p2, p3]);
+            上面代码中，只要p1、p2、p3之中有一个实例率先改变状态，p的状态就跟着改变。
+            那个率先改变的 Promise 实例的返回值，就传递给p的回调函数。
+        */
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('p1');
+            }, 1000);
+        });
+
+        const p2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject('p2');
+            }, 900);
+        });
+
+        const p3 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('p3');
+            }, 800);
+        });
+
+        const p4 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject('p4');
+            }, 500);
+        });
+
+        Promise.race([p1, p2, p3]).then(value => {
+            console.log(value); // p3
+        });
+
+        Promise.race([p1, p2, p3, p4]).then(value => {
+            console.log(value); // Uncaught (in promise) p4
+        });
+    </script>
+</body>
+</html>

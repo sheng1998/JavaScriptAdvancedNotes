@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // symbol 是ES6引入的第6中基本数据类型。
+        // 看起来一样的两个 symbol 变量不相等。
+        let sy1 = Symbol('2020');
+        let sy2 = Symbol('2020');
+        let sy3 = sy2;
+        console.log(sy1); // Symbol(2020)
+        console.log(sy1 == sy2); // false
+        console.log(sy2 == sy3); // true
+    </script>
+</body>
+</html>

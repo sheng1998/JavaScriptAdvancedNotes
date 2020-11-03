@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const inventory = [
+            {name: 'apple', quantity: 2},
+            {name: 'banana', quantity: 0},
+            {name: 'orange', quantity: 5}
+        ]
+
+        let hasBanana = inventory.some(fruit => fruit.quantity > 0)
+        console.log(hasBanana) // true
+
+        let hasBanana1 = inventory.some(fruit => {
+            console.log(fruit) // {name: "apple", quantity: 2}
+            return fruit.quantity > 0
+        })
+        console.log(hasBanana1) // true
+    </script>
+</body>
+</html>

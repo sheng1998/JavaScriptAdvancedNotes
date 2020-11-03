@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = {name: 'xiaozhuang'}
+        console.log(a) // {name: "xiaozhuang"}
+        var b = a
+        console.log(b) // {name: "xiaozhuang"}
+        b.age = 12
+        console.log(a) // {name: "xiaozhuang", age: 12}
+        console.log(b) // {name: "xiaozhuang", age: 12}
+
+        // 这里相当于重新给变量 b 赋值（指向新的地址）
+        b = {name: 'sheng'}
+        console.log(a) // {name: "xiaozhuang", age: 12}
+        console.log(b) // {name: "sheng"}
+
+        var z = 3
+        function fn2(z) {
+            z = z + 1
+        }
+        console.log(z) // 3
+
+        var obj1 = {name: 'xiaozhuang', age: '22'}
+        var obj2 = obj1
+        console.log(obj1, obj2) // {name: "xiaozhuang", age: "22"} {name: "xiaozhuang", age: "22"}
+
+        function fn(obj) {
+            obj.name = 'sheng'
+        }
+
+        fn(obj2)
+        console.log(obj1.name)  // sheng
+
+
+        var c = 3
+        var obj3 = {}
+        obj3 = null // 空间不会释放，只是变成了 null
+
+        function fn3() {
+            var d = 4;
+        }
+        fn3() // d 是会自动释放的，d 指向的对象是在后面的某个时科被垃圾回收器回收的
+    </script>
+</body>
+</html>

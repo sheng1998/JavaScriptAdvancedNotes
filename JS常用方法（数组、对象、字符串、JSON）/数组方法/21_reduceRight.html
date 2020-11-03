@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            reduceRight()
+                定义和用法：
+                    该方法接收一个函数作为累加器，数组中的每一个值从右到左开始缩减，最终计算一个值。
+                    该方法作为一个高阶函数，用于函数的compose。
+                    reduceRight() 不会对空数组执行回调函数。
+                语法：
+                    array.reduceRight(function(total, item, index, arr) {return total + item;})
+                参数说明：
+                    参数为一个函数，必需，函数可以传递四个参数：
+                        函数第一个参数 total 必需，初始值或者计算结束后的返回值。
+                        函数第二个参数 item 必需，当前元素。
+                        函数第三个参数 index 可选，当前元素的索引。
+                        函数第四个参数 arr 可选，当前元素所属数组。
+                        第一次执行 reduceRight() 时:
+                            total = array[array.length - 1]
+                            item = array[array.length - 2]
+                            index = array.length - 1
+                            arr = array
+                            之后 total 的值为上一次计算的结果，index 逐渐递减。
+                    返回值可以是任何形式的数值运算，不一定是 total + item
+        */
+        let grades = [10, 20, 30, 40];
+
+        let result = grades.reduceRight((total, grade, index, arr) => {
+            console.log(total, grade, index, arr);
+            // 40 30 2 [10, 20, 30, 40]
+            // 70 20 1 [10, 20, 30, 40]
+            // 90 10 0 [10, 20, 30, 40]
+            return total + grade;
+        });
+
+        console.log(result); // 100
+    </script>
+</body>
+</html>

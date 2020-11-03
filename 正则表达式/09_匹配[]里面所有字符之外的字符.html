@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        [^abc]：匹配处abc之外的所有字符
+        [^0-9]：匹配所有非数字字符，相当于\D
+        [^0-9a-zA-Z_]：匹配所有非英文字符、数字、下划线之外的字符，相当于\W
+    -->
+    <script>
+        let reg1 = /[^abc]/g // 匹配处abc之外的所有字符
+        let reg2 = /[^0-9]/g // 匹配所有非数字字符，相当于\D
+        let reg3 = /[^0-9a-zA-Z_]/g // 匹配所有非英文字符、数字、下划线之外的字符，相当于\W
+        console.log('acdbs12'.replace(reg1, 'A')) // acAbAAA
+        console.log('ac5s12'.replace(reg2, 'A')) // AA5A12
+        console.log('ac_s12,一'.replace(reg3, 'A')) // ac_s12AA
+    </script>
+</body>
+</html>

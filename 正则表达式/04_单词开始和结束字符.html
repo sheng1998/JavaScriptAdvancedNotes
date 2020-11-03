@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        \b 是正则表达式规定的一个特殊代码，代表着单词的开头或结尾，也就是单词的分界处
+     -->
+     <script>
+        let reg = /\babc\b/g
+        console.log('abc is abcd - d,abc.'.replace(reg, 'AAA')) // AAA is abcd - d,AAA.
+     </script>
+</body>
+</html>

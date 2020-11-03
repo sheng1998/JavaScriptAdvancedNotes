@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            push()
+                定义和用法：
+                    该方法用于向数组最后添加一个或者多个元素，并返回最新的数组长度。
+                    该方法会改变原始数组，原始数组的长度会增加。
+                语法： 
+                    array.push(item1, item2, ..., itemX)
+                参数说明：
+                    参数个数要大于等于 1，每个参数表示插入到原数组的末尾的每一个元素。
+        */
+       let names = ['李白', '韩信', '赵云'];
+
+       names.push('露娜', ['兰陵王']); // ["李白", "韩信", "赵云", "露娜", ['兰陵王']]
+       console.log(names);
+    </script>
+</body>
+</html>

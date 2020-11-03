@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1. this 是什么？
+            * 任何函数本质上都是通过某个对象来调用的，如果没有直接指定就是 window
+            * 任何函数内部都有一个变量 this，它的值是调用函数的当前对象
+        2. 如任何确定 this 的值？
+            * fun(): window
+            * p.fun(): p
+            * new fun(): 新创建的对象
+            * p.call(obj): obj
+            * p.apply(obj): obj
+            * p.bind(obj): obj
+     -->
+    <script>
+        function Person(color) {
+            console.log(this)
+            this.color = color
+            this.getColor = function () {
+                console.log(this)
+                return this.color
+            }
+            this.setColor = function (color) {
+                console.log(this)
+                this.color = color
+            }
+        }
+
+        Person('Red') // 这里 this 是window，因为没有指定调用的对象，默认有window调用
+
+        var p = new Person('yello') // 这里的this指向p
+
+        p.getColor() // 这里的this指向p
+
+        var obj1 = {}, obj2 = {}
+
+        p.setColor.call(obj1, "black") // 这里的this指向obj1
+        p.setColor.apply(obj2, ['black']) // 这里的this指向obj2
+
+        var test = p.setColor
+        test() // 这里 this 是window，因为没有指定调用的对象，默认有window调用
+
+        function fun1() {
+            function fun2() {
+                console.log(this)
+            }
+
+            fun2() // 这里 this 是window，因为没有指定调用的对象，默认有window调用
+        }
+
+        fun1()
+    </script>
+</body>
+</html>

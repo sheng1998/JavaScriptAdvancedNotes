@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Students(name, age) {
+            // if(new.target) { // 如果直接调用构造函数，则 new.target === undefined
+            if(new.target === Students) { // 通过 new 来生成实例时，new.target === Students
+                this.name = name;
+                this.age = age;
+            } else {
+                throw new Error('必须通过 new 命令生成实例。');
+            }
+        }
+
+        let student = new Students('Lili', 18);
+        // Students('sheng', 22); // Uncaught Error: 必须通过 new 命令生成实例
+
+
+
+
+        // Class 内部调用new.target，返回当前 Class。
+        class Rectangle {
+            constructor(length, width) {
+                console.log(new.target === Rectangle);
+                this.length = length;
+                this.width = width;
+            }
+        }
+        // 需要注意的是，子类继承父类时，new.target会返回子类。
+        class Square extends Rectangle {
+            constructor(length, width) {
+                super(length, width);
+            }
+        }
+
+        let obj = new Rectangle(3, 4); // 输出 true
+        let obj2 = new Square(3); // 输出 false
+
+        // 利用这个特点，可以写出不能独立使用、必须继承后才能使用的类。
+        class Shape1 {
+            constructor() {
+                if (new.target === Shape1) {
+                    throw new Error('本类不能实例化');
+                }
+            }
+        }
+
+        class Rectangle1 extends Shape1 {
+            constructor(length, width) {
+                super();
+            }
+        }
+
+        // var x = new Shape1(); // Uncaught Error: 本类不能实例化
+        var y = new Rectangle1(3, 4);
+    </script>
+</body>
+</html>

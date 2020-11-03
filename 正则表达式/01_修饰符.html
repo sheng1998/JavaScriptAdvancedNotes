@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        g：global--全文搜索，不添加，搜索到第一个匹配为止；
+        i：ignore case--忽略大小写，默认大小写敏感；
+        m：multiple lines--多行搜索。
+     -->
+    <script>
+        var str = 'you are my friends, are you my hello hi she AreyouOK.'
+        
+        var reg1 = new RegExp('are') // 相当于 var reg1 = /are/
+        console.log(str.replace(reg1, 'AAA')) // you AAA my friends, are you my hello hi she AreyouOK.
+
+        // g：global--全文搜索，搜索到第一个匹配为止；
+        var reg2 = /are/g
+        console.log(str.replace(reg2, 'BBB')) // you BBB my friends, BBB you my hello hi she AreyouOK.
+
+        // i: ignore case--忽略大小写，默认大小写敏感；
+        var reg3 =/are/gi // 表示忽略大小写匹配全文带有 are 的子串
+        console.log(str.replace(reg3, 'CCC')) // you CCC my friends, CCC you my hello hi she CCCyouOK.
+    </script>
+</body>
+</html>

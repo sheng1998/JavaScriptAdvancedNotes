@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 这种方法会将父类的私有或者公有属性和方法变成子类的公有属性和方法。
+
+        // 定义父类
+        function Parents(name) {
+            this.name = name;
+            this[Symbol(2020)] = Symbol(2020);
+        }
+        Parents.prototype.fun1 = function () {
+            return 'parents.';
+        }
+        Parents.prototype[Symbol(2020)] = Symbol(2020);
+
+        // 定义子类
+        function Child(age) {
+            this.age = age;
+        }
+        Child.prototype.fun2 = function () {
+            return 'child.';
+        }
+
+         // 下面两行是原型继承的实现
+        Child.prototype = new Parents('parents');
+        Child.prototype.constructor = Child;
+
+        let child = new Child(22);
+        console.log(child); // Child {age: 22}
+        child.__proto__.__proto__.fun1 = function() { // 该语句会修改父类的方法 fun1
+            return 'child222222.';
+        };
+        console.log((new Parents('parents')).fun1()); // child222222.
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON.stringify</title>
+</head>
+<body>
+    <!-- 
+        JSON.stringify 的作用是把一个 JS 对象转为 JSON,
+            1、stringify的第二参数如果是数组，用来提取数据，该参数是一个数组，传入需要提取的对象中的属性(不能提取undefined、function、symbol这类数据类型)
+            如果对象里有一个属性是对象类型的属性好像不能提取出来，也许是不是简单的直接提取
+     -->
+    <script>
+        let obj = {
+                name: 'sheng',
+                sex: '男',
+                age: 20,
+                id: '20200923123',
+                achievement: {
+                    chinese: 145,
+                    mathematics: 148,
+                    english: 140
+                },
+                fun: function() { // 无法提取
+                    console.log('fun')
+                },
+                arr: [1, 3, 5, [1, 2]],
+                undefined: undefined, // 无法提取
+                symbol: Symbol(1) // 无法提取
+            }
+        let json = JSON.stringify(obj, ['name', 'id', 'achievement'])
+        console.log(JSON.stringify(obj.achievement))
+        console.log(obj.achievement)
+        console.log(json)
+    </script>
+</body>
+</html>

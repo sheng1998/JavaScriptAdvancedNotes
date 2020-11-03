@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <form class="add-comment">
+            <textarea class="comment-text"></textarea>
+            <br>
+            <button class="btn btn-primary" value="submit">Post Comment</button>
+        </form>
+        <div class="comment"></div>
+        <!-- <img src="http://staticfile.org/assets/images/juejin.png" alt="" onload="alert(111)"> -->
+    </div>
+    <script src="https://cdn.bootcss.com/dompurify/1.0.3/purify.js"></script>
+    <script>
+        function sanitize(strings, ...values) {
+            const dirty = strings.reduce((prev, curr, i) => `${prev}${curr}${values[i] || ''}`, '');
+            return DOMPurify.sanitize(dirty);
+        }
+        const addCommentForm = document.querySelector('.add-comment');
+        const textarea = document.querySelector('.comment-text');
+        const commentDiv = document.querySelector('.comment');
+        const user = '';
+
+        addCommentForm.addEventListener('submit', function (event) {
+            event.preventDefault(); //取消事件的默认动作
+            const newConmment = textarea.value.trim();
+            if (newConmment) {
+                commentDiv.innerHTML += sanitize`
+                    <div class=" comment-header">${user}</div>
+                    <div class="comment-body">${textarea.value}</div>
+                    `
+                textarea.value = ``;
+            }
+        })
+    </script>
+</body>
+</html>

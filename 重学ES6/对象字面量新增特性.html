@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let name = 'sheng';
+        let age = 22;
+        let birthday = '2000-01';
+        let Jone = { // 属性名和变量名一致，可以简写(ES5写法：name: name)
+            name, age, birthday
+        }
+        console.log(Jone); // {name: "sheng", age: 22, birthday: "2000-01"}
+
+        // 可以直接在对象的大括号里面使用模板字符串(注意如果是属性时，需要外面包着中括号)
+        let id = 0;
+        let students = {
+            [`student-${++id}`]: id,
+            [`student-${++id}`]: id,
+            [`student-${++id}`]: id,
+            [`student-${++id}`]: id
+        }
+        console.log(students); // {student-1: 1, student-2: 2, student-3: 3, student-4: 4}
+
+        // 可以直接在对象的大括号里面使用表达式(注意如果是属性时，需要外面包着中括号) 
+        let keys = ['name', 'age', 'birthday'];
+        let valus = ['Laravist', 20, '2000-01'];
+        let Laravist = {
+            [keys.shift()]: valus.shift(),
+            [keys.shift()]: valus.shift(),
+            [keys.shift()]: valus.shift()
+        }
+        console.log(Laravist); // {name: "Laravist", age: 20, birthday: "2000-01"}
+    </script>
+</body>
+</html>

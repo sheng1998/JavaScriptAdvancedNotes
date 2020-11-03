@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 该方法既可以继承父类实例上的属性和方法，也可以继承父类原型链上的方法和属性，也可以继承父类的私有属性和方法 -->
+    <script>
+        class Parents { // 使用 class 肯定有一个 constructor 函数，如不写浏览器会自动加上。
+            #attribute = '我是私有属性 #attribute。'; // 私有属性，可被继承
+            static myName = 'sheng'; // 静态属性，不可被继承
+            constructor(name) {
+                this.name = name; // 实例上的属性，可被继承
+                this[Symbol(2020)] = Symbol(2020); // 实例上的属性，可被继承
+                this.fun = function() {} // 实例上的属性，可被继承
+            }
+            fun1() { // 公有方法，可被继承
+                return 'fun1';
+            }
+            #fun1() { // 私有方法，可被继承
+                return '#fun1';
+            }
+            static fun() { // 静态方法，不可被继承
+                return 'fun'
+            }
+            [Symbol(2020)]() { // 公有方法，可被继承
+                return 'Symbol(2020)';
+            }
+        }
+        Parents.prototype.hhh = 'hhhhhh'; // 原型链上的属性，可被继承
+
+        class Child extends Parents {
+            constructor(name, age) {
+                super(name); // 继承必须要写 super()
+                this.age = age;
+            }
+            fun2() {
+                return 'fun2';
+            }
+        }
+
+        console.log(new Parents('myname'));
+        let child = new Child('myname', 18);
+        console.log(child);
+    </script>
+</body>
+</html>

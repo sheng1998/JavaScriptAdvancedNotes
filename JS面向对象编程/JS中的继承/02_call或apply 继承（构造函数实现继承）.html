@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 这种方法只能继承父类私有属性和方法，不能继承父类原型上的属性和方法
+
+        // 定义父类
+        function Parents(name) {
+            this.name = name;
+            this[Symbol(2020)] = Symbol(2020);
+        }
+        Parents.prototype.fun1 = function () {
+            return 'parents';
+        }
+
+        // 定义子类
+        function Child(name, age) {
+            Parents.call(this, name); // call继承
+            // Parents.apply(this, [name]); // apply继承
+
+            this.age = age;
+        }
+        Child.prototype.fun2 = function () {
+            return 'child';
+        }
+
+        let child = new Child('child', 20);
+        console.log(child);
+    </script>
+</body>
+</html>

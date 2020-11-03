@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 10
+        function fun1() {
+            var a = 20
+            function fun2() {
+                console.log(++a)
+            }
+            return fun2
+        }
+        var tmp1 = fun1()
+        var tmp2 = fun1()
+        tmp1() // 21
+        tmp1() // 22
+        tmp1() // 23
+        tmp2() // 21
+        console.log(a) //10
+    </script>
+</body>
+</html>

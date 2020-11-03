@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class User {
+            #attribute = '我是私有属性 #attribute。';
+
+            constructor() {
+                this.attribute = '我是普通属性 attribute。';
+                this.test = this.#fun();
+            }
+
+            #fun() {
+                return '我是私有方法 #fun。';
+            }
+
+            fun() {
+                return '我是普通方法 fun。';
+            }
+        }
+
+        let user = new User();
+        // console.log(user.#attribute); // Uncaught SyntaxError: Private field '#attribute' must be declared in an enclosing class
+        console.log(user.attribute); // 我是普通属性 attribute。
+        // console.log(user.#fun); // Uncaught SyntaxError: Private field '#fun' must be declared in an enclosing class
+        console.log(user.fun()); // 我是普通方法 fun。
+        console.log(user.test); // 我是私有方法 #fun。
+    </script>
+</body>
+</html>

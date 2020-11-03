@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            join()
+                定义和用法：
+                    join() 方法用于将数组的所有元素连接成一个字符串。
+                    该方法会先将数组所有元素转换成字符串，再通过连接符连接在一起。
+                语法：
+                    array.join(separator)
+                参数说明：
+                    该函数只有一个参数，该参数 separator 可选，代表使用指定的分隔符连接数组的每个元素，默认为逗号。
+        */
+        let names = ['李白', '韩信', '赵云', '露娜'];
+
+        let str = names.join(); // 李白,韩信,赵云,露娜
+        let str2 = names.join('-'); // 李白-韩信-赵云-露娜
+        console.log(str2);
+
+        let obj = {  name: 'sheng',age: 22 };
+
+        let ages = [18, 20, obj, true];
+        let str3 = ages.join('-'); // 18-20-[object Object]-true
+        console.log(str3);
+    </script>
+</body>
+</html>

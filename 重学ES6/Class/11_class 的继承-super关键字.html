@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Animal {
+            constructor(name) {
+                this.name = name;
+            }
+
+            bark() {
+                console.log(`Bark bark!`);
+            }
+        }
+
+        class Dog extends Animal {
+            constructor(name, age) {
+                // this.age = age; // 报错
+                super(name); // 调用了父类的 construtor(name)
+                this.age = age;
+            }
+
+            bark() {
+                console.log(`I am ${this.name}, Bark bark!`);
+            }
+
+            temp() {
+                super.bark();
+            }
+        }
+
+        var dog = new Dog('lucky', 2);
+        dog.bark(); // I am lucky, Bark bark!
+        dog.temp();
+    </script>
+</body>
+</html>

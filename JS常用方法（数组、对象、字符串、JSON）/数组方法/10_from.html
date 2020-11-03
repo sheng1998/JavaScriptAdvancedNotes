@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        /*
+            from()
+                注意：这个不是数组原型上的方法。
+                定义和用法：
+                    该方法用于将伪数组装换为真数组(将具有length属性的对象或可迭代的对象转化为数组)。
+                语法：
+                    Array.from(obj, function)
+                参数说明：
+                    第一个参数 obj，必需，表示需要转换的数组对象。
+                    第二个参数 function，可选，表示数组中每个元素调用的函数。
+        */
+        let node = document.getElementsByTagName('li'); // HTMLCollection(4) [li, li, li, li]
+        console.log(node);
+
+        let nodeArr = Array.from(node); // [li, li, li, li]
+        console.log(nodeArr);
+
+        let strArr = Array.from('sheng'); // ["s", "h", "e", "n", "g"]
+        console.log(strArr);
+
+        let setArr = Array.from(new Set(['a', 'b'])); // ["a", "b"]
+        console.log(setArr);
+    </script>
+</body>
+</html>

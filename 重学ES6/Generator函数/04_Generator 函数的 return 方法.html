@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function* gen() {
+            yield 1;
+            yield 2;
+            yield 3;
+        }
+
+        let g1 = gen();
+        let g2 = gen();
+
+        console.log(g1.next()) // {value: 1, done: false}
+        console.log(g1.return('foo')) // {value: "foo", done: true}
+        console.log(g1.next()) // {value: undefined, done: true}
+
+        // 如果return方法调用时，不提供参数，则返回值的value属性为undefined。
+        console.log(g2.next()) // {value: 1, done: false}
+        console.log(g2.return()) // {value: undefined, done: true}
+
+        console.log('*******************************8')
+
+        /*
+            如果 Generator 函数内部有try...finally代码块，且正在执行try代码块，
+            那么return方法会导致立刻进入finally代码块，执行完以后，整个函数才会结束。
+        */
+        function* numbers () {
+            yield 1;
+            try {
+                yield 2;
+                yield 3;
+                yield 4;
+            } finally {
+                yield 5;
+                yield 6;
+            }
+            yield 7;
+        }
+        let g3 = numbers();
+        console.log(g3.next()) // { value: 1, done: false }
+        console.log(g3.next()) // { value: 2, done: false }
+        console.log(g3.return(8)) // { value: 5, done: false }
+        console.log(g3.next()) // { value: 6, done: false }
+        console.log(g3.next()) // { value: 8, done: true }
+
+        /*
+            上面代码中，调用return()方法后，就开始执行finally代码块，不执行try里面剩下的代码了，
+            然后等到finally代码块执行完，再返回return()方法指定的返回值。
+        */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            定义和用法:
+                entries() 方法返回一个数组的迭代对象，该对象包含数组的键值对 (key/value)。
+                迭代对象中数组的索引值作为 key， 数组元素作为 value。
+            语法：
+                array.entries()
+        */
+        let a = ['A', 'B', 'C'];
+        let b = a.entries();
+        let c = {
+            a: 1,
+            b: 2
+        }
+
+        console.log(b.next().value); // [0, "A"]
+        console.log(b.next().value); // [1, "B"]
+        console.log(b.next().value); // [2, "C"]
+
+        for(let [key, value] of a.entries()) {
+            console.log(key + '---' + value);
+            // 0---A
+            // 1---B
+            // 2---C
+        }
+    </script>
+</body>
+</html>

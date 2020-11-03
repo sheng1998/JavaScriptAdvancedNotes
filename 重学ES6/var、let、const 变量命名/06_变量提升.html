@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(foo)
+        var foo = 1
+        console.log(foo)
+        foo()
+        function foo() {
+            console.log('foo')
+        }
+        /*
+            function foo() {
+                console.log('foo')
+            } // 函数提升，函数提升优先级高于变量提升的优先级
+            var foo; // 变量提升，值不会提升
+            console.log(foo) // 输出 foo 这个函数，虽然foo重新定义了，但是没有赋值，所以foo的值还是原始值
+            foo = 1；
+            console.log(foo) // 1(foo被重新赋值了，所以foo的)
+
+        */
+        var name = 'sheng'
+        function fun() {
+            console.log(name) // undefined
+            var name = 'xiaozhuang'
+            console.log(name) // xiaozhuang
+        }
+        fun()
+        /*
+            虽然name在函数之外已经声明并赋值了，可是在函数里面又定义了name，所以当查找变量时会先在函数内部查找，如果找到了就不会查找函数外面的同名变量。
+        */
+    </script>
+</body>
+</html>

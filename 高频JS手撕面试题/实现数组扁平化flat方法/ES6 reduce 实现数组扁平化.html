@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./ES6 reduce 实现数组扁平化.js"></script>
+    <script>
+    let arr = [
+        [1, '', '2'], Infinity,
+        [3, 4, 4, '[1]'],[],[],
+        [null, undefined],
+        [Date.now(), function fun() {}],
+        [true, Symbol(2020), {name: 'sheng', grade: [90]}],
+        [6, 9, [11, '12', [12, [14]]]], 10
+    ];
+
+        console.log(myFlat(arr));
+        // [1, "", "2", Infinity, 3, 4, 4, "[1]", null, undefined, 1603780378628, ƒ, true, Symbol(2020), {name: "sheng", grade: [90]}, 6, 9, 11, "12", 12, 14, 10]
+
+        console.log(arr.flat(Infinity));
+        // [1, "", "2", Infinity, 3, 4, 4, "[1]", null, undefined, 1603780378628, ƒ, true, Symbol(2020), {name: "sheng", grade: [90]}, 6, 9, 11, "12", 12, 14, 10]
+    </script>
+</body>
+</html>

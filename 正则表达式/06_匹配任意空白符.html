@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        \s：匹配任意的空白符，包括空格，制表符(Tab)，换行符，中文全角空格等
+        \S: 匹配非空白字符
+     -->
+    <script>
+        let reg1 = /\s/g
+        let reg2 = /\S/g
+        console.log(' 1a 3\n e.\t'.replace(reg1, 'A')) // A1aA3AAe.A
+        console.log('1a 3 e.'.replace(reg2, 'A')) // AA A AA
+    </script>
+</body>
+</html>

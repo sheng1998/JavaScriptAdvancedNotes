@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./apply.js"></script>
+    <script>
+        let obj = {
+            x: 2020,
+        };
+        function foo() {
+            console.log(this.x);
+        }
+
+        foo.myApply(obj,[1,2,2,3]);
+    </script>
+</body>
+</html>

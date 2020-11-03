@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            Promise.any()方法接受一组 Promise 实例作为参数，包装成一个新的 Promise 实例。
+            只要参数实例有一个变成fulfilled状态，包装实例就会变成fulfilled状态；
+            如果所有参数实例都变成rejected状态，包装实例就会变成rejected状态。
+        */
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('p1');
+            }, 1000);
+        });
+
+        const p2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject('p2');
+            }, 300);
+        });
+
+        const p3 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject('p3');
+            }, 500);
+        });
+
+        Promise.any([p1, p2]).then(value => {
+            console.log(value); // p1
+        });
+
+        Promise.any([p2, p3])
+            .then(value => {
+                console.log(value);
+            })
+            .catch(err => {
+                console.error(err); //AggregateError: All promises were rejected
+            });
+    </script>
+</body>
+</html>

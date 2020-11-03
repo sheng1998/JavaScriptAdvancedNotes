@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 该方法可以继承父类原型链上的属性和方法，也可以继承父类的私有属性和方法，但是该方法创建了一个父类的实例，所需要的消耗的内存会变大。 -->
+    <script>
+        // 定义父类
+        function Parents(name) {
+            this.name = name;
+            this[Symbol(2020)] = Symbol(2020);
+        }
+        Parents.prototype.fun1 = function () {
+            return 'parents';
+        }
+        Parents.prototype[Symbol(2020)] = Symbol(2020);
+
+        // 定义子类
+        function Child(name, age) {
+            Parents.call(this, name); // call继承
+            // Parents.apply(this, [name]); // apply继承
+
+            this.age = age;
+        }
+        Child.prototype.fun2 = function () {
+            return 'child';
+        }
+
+        // 下面两个语句是组合继承的实现
+        Child.prototype = new Parents(); // 会增加内存消耗
+        Child.prototype.constructor = Child;
+
+        let child = new Child('myname', 22);
+        console.log(child);
+    </script>
+</body>
+</html>

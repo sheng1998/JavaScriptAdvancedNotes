@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            sort()
+                定义和用法：
+                    该方法用于对数组进行排序，默认为升序。
+                    无论是字符还是数字都可以排序，
+                        如果是字符则按照 ASCII 来排序。
+                        如果是数字则按照数字大小排序。
+                        如果是数字和字母混合，则将数字转换为字符串，再排序。
+                语法：
+                    array.sort(function(a, b) {return a -b;})
+                参数说明：
+                    参数是一个比较函数：
+                        如果函数返回 a - b, 则数组升序排序。
+                        如果函数返回 b - a, 则数组降序排序。
+        */
+        let ages = [16, 12, 15, 10, 20, 18];
+        ages.sort(); // [10, 12, 15, 16, 18, 20]
+        
+        let ages2 = [16, 12, 15, 10, 20, 18];
+        ages2.sort((a, b) => {
+            return a - b;
+        }); // [10, 12, 15, 16, 18, 20]
+
+        let ages3 = [16, 12, 15, 10, 20, 18];
+        ages3.sort((a, b) => {
+            return b - a;
+        }); // [20, 18, 16, 15, 12, 10]
+
+        let arr = ['10', '0', '1', 2, '4', 1];
+        arr.sort(); // ["0", "1", 1, "10", 2, "4"]
+
+        let fruits = ["Banana", "Orange", "Apple", "Mango"];
+        fruits.sort(); // ["Apple", "Banana", "Mango", "Orange"]
+
+        console.log(arr);
+    </script>
+</body>
+</html>

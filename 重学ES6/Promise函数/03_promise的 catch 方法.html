@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        let usersPromise = axios.get('https://api.github.com/users1'); // 这里返回的是 Promise 对象
+
+        usersPromise
+            .then(
+                comments => {
+                    console.log(comments.data);
+                    return axios.get(`https://api.github.com/users/${comments.data[0].login}/repos`);
+                }
+            )
+            .then(
+                value => {
+                    console.log(value.data);
+                }
+            )
+            .catch(
+                err => {
+                    console.error(err); // Error: Request failed with status code 404
+                }
+            )
+    </script>
+</body>
+</html>

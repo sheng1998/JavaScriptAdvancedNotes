@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>11111111</li>
+        <li>22222222</li>
+        <li>33333333</li>
+    </ul>
+    <script>
+        const todos = document.querySelectorAll('li');
+        console.log(todos); // NodeList(3) [li, li, li]
+        const names = Array.from(todos, todo => todo.textContent);
+        console.log(names) // ["11111111", "22222222", "33333333"]
+        console.log('********************************')
+
+        console.log(Array.from('xiaozhuang')) // ["x", "i", "a", "o", "z", "h", "u", "a", "n", "g"]
+    </script>
+</body>
+</html>

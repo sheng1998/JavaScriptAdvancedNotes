@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class User {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            getName() {
+                console.log(`My name is ${this.name}`);
+            }
+        }
+
+        var Lili = new User('Lili', '18');
+        console.log(Lili.name, Lili.age); // Lili 18
+
+        Lili.getName(); // My name is Lili
+    </script>
+</body>
+</html>

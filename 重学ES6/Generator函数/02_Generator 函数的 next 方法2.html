@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function* dataConsumer() {
+            console.log('Started')
+            console.log(`1. ${yield}`)
+            console.log(`2. ${yield}`)
+            return 'result'
+        }
+
+        let genObj = dataConsumer()
+        genObj.next()
+        genObj.next('a')
+        console.log(genObj.next('b'))
+        console.log(genObj.next())
+    </script>
+</body>
+
+</html>

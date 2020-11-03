@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let sym = Symbol('sym')
+        let obj = {
+            [sym]: 'sym', // Symbol 类型的属性
+            name: 'sheng',
+            age: 20,
+            university: '广东海洋大学',
+            setName(name) {
+                return this.name = name
+            },
+            setAge(age) {
+                return this.age = age
+            },
+            setUniversity(university) {
+                return this.university = university
+            }
+        }
+        
+
+        Object.defineProperty(obj, 'sex', {
+            value: '男',
+            enumerable: false // 不可枚举的
+        })
+
+        // for (const key in obj) {
+        //     console.log(key, obj[key])
+        // }
+        console.log(Object.keys(obj)) // 输出由obj对象的key值组成的的数组(不包括不可枚举和Symbol类型属性)
+        console.log(Object.getOwnPropertyNames(obj)) // 输出由obj的属性组成的数组(包括不可枚举属性，不包括Symbol类型属性)
+        console.log(Object.getOwnPropertySymbols(obj)) // 返回一个数组，包含对象自身的所有 Symbol 属性的键名。
+        console.log(Reflect.ownKeys(obj)) // 返回一个数组，包含对象自身的（不含继承的）所有键名，不管键名是 Symbol 或字符串，也不管是否可枚举。
+    </script>
+</body>
+</html>

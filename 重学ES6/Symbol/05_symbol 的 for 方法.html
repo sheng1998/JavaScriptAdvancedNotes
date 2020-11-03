@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 有时候我们需要用到同一个 Symbol 来做一些处理，就要用到 Symbol.for 方法来注册一个全局的 Symbol
+        let sy1 = Symbol.for(2020);
+        let sy2 = Symbol.for(2020);
+        let obj = {
+            [sy1]: 'sheng'
+        }
+
+        console.log(obj[sy1]); // sheng
+        console.log(obj[sy2]); // sheng
+        console.log(sy1 === sy2); // true
+    </script>
+</body>
+</html>

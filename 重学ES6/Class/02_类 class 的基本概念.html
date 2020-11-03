@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class User{}
+
+        console.log(typeof User); // 'function'
+        console.log(User === User.prototype.constructor); // true
+
+        class Student{
+            set studentNames(value) {
+                this.studentName = value;
+            }
+
+            get studentNames() {
+                return this.studentName;
+            }
+        }
+
+        let student = new Student();
+
+        student.studentName = 'sheng';
+        console.log(student.studentName); // sheng
+    </script>
+</body>
+</html>

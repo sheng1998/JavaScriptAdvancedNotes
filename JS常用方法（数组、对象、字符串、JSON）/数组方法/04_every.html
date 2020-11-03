@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            every()
+                定义和用法:
+                    该方法用于检测数组中所有元素是否都符合指定条件（由函数提供）。
+                    该方法使用指定函数检测数组中的所有元素：
+                        如果函数中检测到一项不满足指定条件的，则整个表达式返回 false,而且不会继续检测接下来的元素。
+                        只有当数组中所有元素都满足条件才会返回 true。
+                    注意：every() 不会对空数组进行检测。
+                    注意：every() 不会改变原始数组。
+                语法：
+                    array.every(function(item, index, arr) {return condition;})
+                参数说明：
+                    参数为一个函数，函数可以传递三个参数：
+                        函数的第一个参数 item 表示数组的每一项。
+                        函数的第二个参数 index 表示数组的下标。
+                        函数的第三个参数 arr 表示整个数组
+        */
+        let ages = [16, 18, 20, 22];
+
+        let checkAge = ages.every(age => {
+            // return age >= 18; // false
+            return age >= 16; // true
+        });
+
+        console.log(checkAge);
+
+        const inventory = [
+            {name: 'apple', quantity: 2},
+            {name: 'banana', quantity: 0},
+            {name: 'orange', quantity: 5}
+        ];
+        let falg = inventory.every(fruit => {
+            console.log(fruit);
+            // {name: "apple", quantity: 2}
+            // {name: "banana", quantity: 0}
+            return fruit.quantity > 0;
+        })
+        console.log(falg); // false
+    </script>
+</body>
+</html>

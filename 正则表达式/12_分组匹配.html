@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1、想要重复多个字符，可以用小括号来指定子表达式(也叫做分组)
+        
+        2、通过()括起来的分组中匹配到的内容会被保留下来,可以在后面的表达式中引用到被匹配到的文本,在后面引用的形式为\num(num表示第num组)
+        
+        3、在字符串替换中,也可以在第二个参数中引用第一个参数里的分组,不过形式变为$num(js语法),或者通过RegExp.$num调用
+        
+        4、使用正常的()分组会把括号中子表达式匹配的内容暂时存储起来,如果用不着反向引用的功能,会影响正则表达式的性能;为此,正则表达式提供了非捕获分组功能,非捕获分组只用于限定量词作用范围,不会捕获文本内容.
+        形式为将(...)改为(?:...), 碰到非捕获分组时编号不会递增
+        
+        5、仅依靠编号\1 \2 \3这样引用分组容易导致混乱,可以使用命名分组实现类似变量的功能,在正则表达式分组中使用?<name>为分组命名，他的反向引用语法为\k<name>,在replace中则是$<name>
+    -->
+    <script>
+        let reg1 = /a(\d){2}a/g
+        console.log('a12a234a1a'.replace(reg1, 'A')) // A234a1a
+        console.log(RegExp.$1) // 输出第一个分组的值(这里的RegExp是就近原则)，输出结果是：2
+
+        let reg2 = /a(22){2}a/g
+        console.log('a22a2222a'.replace(reg2, 'A')) // a22A
+        console.log(RegExp.$1) // 输出第一个分组的值(这里的RegExp是就近原则)，输出结果是：22
+
+        let reg3 = /(http|https):\/{2}w{3}\.(baidu|google)\.(com|cn)/
+        console.log(reg3.test('http://www.baidu.com')) // true
+        console.log('http://www.baidu.com'.replace(reg3, '$2')) // baidu
+        console.log('http://www.baidu.com'.replace(reg3, RegExp.$3)) // com
+        console.log(RegExp.$2) // 输出第二个分组的值(这里的RegExp是就近原则)，输出结果是：baidu
+
+        let reg4 = /(o)\1/g
+        console.log('Hello goooogle!'.replace(reg4, '$1')) // Hello google!
+
+        console.log('2020-09-17'.replace(/(\d{4})-(\d{2})-(\d{2})/,'$1年$2月$3日')) // 2020年09月17日
+
+        let reg5 = /(?:http|https):\/{2}w{3}\.(baidu|google)\.(com|cn)/
+        console.log('http://www.baidu.com'.replace(reg5, '$2')) // com
+
+        let reg6 = /(?<http>http|https):\/{2}w{3}\.(baidu|google)\.(com|cn)/
+        console.log('http://www.baidu.com'.replace(reg6, '$<http>')) // http
+        console.log(/(?<year>\d{4})-(\d{2})-(\d{2}) \k<year>-\2-\3/.test('2020-01-02 2020-01-02')) // true
+        console.log('http://www.baidu.com'.replace(reg6, '$<https>')) // ''
+        console.log(/(?<year>\d{4})-(\d{2})-(\d{2}) \k<years>-\2-\3/.test('2020-01-02 2020-01-02')) // 报错 Invalid named capture referenced
+    </script>
+</body>
+</html>

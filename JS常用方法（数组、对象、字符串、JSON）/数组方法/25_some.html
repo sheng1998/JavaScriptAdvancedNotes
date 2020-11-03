@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            some()
+                定义和用法：
+                    该方法用于检测数组中是否存在满足某一条件的元素（函数提供）。
+                    只要找到一个满足条件的元素就会返回 true, 剩余的元素不会继续检测。
+                    如果找不到满足条件的元素就返回 false。
+                    如果提供的函数没有返回值，就默认返回 false。
+                    some() 不会对空数组进行检验。
+                    some() 不会改变原始数组。
+                语法：
+                    array.some(function(item, index, arr) {return condition;})
+                参数说明：
+                    参数为一个函数，函数可以传递三个参数：
+                        函数的第一个参数 item 表示数组的每一项。
+                        函数的第二个参数 index 表示数组的下标。
+                        函数的第三个参数 arr 表示整个数组。
+        */
+        let ages = [16, 18, 20, 22];
+
+        let flag = ages.some(age => {
+            console.log(age);
+            // 16
+            // 18
+            return age >= 18;
+        });
+
+        console.log(flag); // true
+    </script>
+</body>
+</html>

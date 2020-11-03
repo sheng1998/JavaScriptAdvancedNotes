@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let map1 = new Map([['A', 1], ['B', 2], ['C', 3], ['D', 4]])
+        let map2 = new Map([[true, 1], [{foo: 3}, ['abc']]])
+        let json= {
+            "name": "sheng",
+            "age": 20
+        }
+
+        // Map 转为 JSON
+        // ① Map 的键名都是字符串，这时可以选择转为对象 JSON
+        function mapToJson1(map) {
+            return JSON.stringify(mapToObject(map));
+        }
+        console.log(mapToJson1(map1))
+
+        // ② Map 的键名有非字符串，这时可以选择转为数组 JSON
+        function mapToJson2(map) {
+            return JSON.stringify([...map]);
+        }
+        console.log(mapToJson2(map2))
+
+        // JSON 转 Map
+        function jsonToMap(json) {
+            return objectToMap(json);
+        }
+        console.log(jsonToMap(json))
+
+        // Map 转为对象
+        function mapToObject(map) {
+            let obj = Object.create(null)
+            for (const [key, value] of map) {
+                obj[key] = value
+            }
+            return obj
+        }
+        // 对象转 Map
+        function objectToMap(obj) {
+            let map = new Map()
+            for (const key in obj) {
+                map.set(key, obj[key])
+            }
+            return map
+        }
+    </script>
+</body>
+</html>

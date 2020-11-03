@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [1, 2, 3, 4, 5];
+        let result = arr.reduce((total, num) => {
+            return total + num;
+            // 返回 1+2+3+4+5 的值
+        })
+        console.log(result); // 15
+        
+        let arr2 = [10, 2, 1];
+        let result2 = arr2.reduce((total, num) => {
+            return total*2 - num;
+            // 返回 (10*2 - 2)*2 -1 的值
+        })
+        console.log(result2); // 35
+    </script>
+</body>
+
+</html>

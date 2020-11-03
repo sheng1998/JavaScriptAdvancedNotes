@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        ^：匹配字符串开始位置
+        $：匹配字符串结束位置
+     -->
+    <script>
+        let reg1 = /^abc/ // 匹配以 abc 开始的字符串
+        let reg2 = /abc$/ // 匹配以 abc 结束的字符串
+        let reg3 = /^a.*c$/ // 匹配以 a 开始，以 c 结束的字符串
+        console.log(reg1.test('abcde')) // true
+        console.log(reg2.test('fdcbaabc')) // true
+        console.log(reg3.test('abcsc')) // true
+    </script>
+</body>
+</html>

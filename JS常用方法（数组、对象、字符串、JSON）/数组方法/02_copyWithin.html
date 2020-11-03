@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* copyWithin() 
+            语法：
+                array.copyWithin(target, start, end)
+            该方法用于从数组的指定位置拷贝元素到数组的另一个指定位置中。
+            该方法不会改变数组的长度，但是会改变原来数组的值。
+            第一个参数必选，表示：复制到指定目标索引位置。
+            第二个参数可选，表示：元素复制的起始位置，不选默认为0。
+            第三个参数可选，表示：停止复制的索引位置 (默认为 array.length)。如果为负值，表示倒数。
+            如果没有第三个参数表示将第二个参数指定的下标到数组结束的值都会被复制到该指定的位置
+            如果复制的长度与复制到的位置的下标之和大于数组长度，则超长部分不会被复制
+        */
+        let fruits = ["Banana", "Orange", "Apple", "Mango"];
+        fruits.copyWithin(3); // ["Banana", "Orange", "Apple", "Banana"]
+
+        let fruits2 = ['A', 'B', 'C', 'D', 'D', 'E'];
+        // 表示将下标0到2之间的值复制到起始位置的下标为3的地方
+        fruits2.copyWithin(3, 0, 2); // ["A", "B", "C", "A", "B", "E"]
+    </script>
+</body>
+</html>

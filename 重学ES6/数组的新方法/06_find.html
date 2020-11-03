@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const inventory = [
+            {name: 'apple', quantity: 2},
+            {name: 'banana', quantity: 0},
+            {name: 'orange', quantity: 5}
+        ]
+
+        const bananas = inventory.find(fruit => fruit.name === 'banana');
+        console.log(bananas); // {name: "banana", quantity: 0}
+
+        const apples = inventory.find((fruit, index) => {
+            console.log(fruit); // {name: "apple", quantity: 2}
+            // return index === 1;
+            return fruit.name === 'apple'; // 找到满足条件的第一条数据就会跳出循环
+        })
+
+        console.log(apples); // {name: "apple", quantity: 2}
+    </script>
+</body>
+</html>
