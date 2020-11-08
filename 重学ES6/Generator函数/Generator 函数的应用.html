@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.0/axios.min.js"></script>
+    <script>
+        function ajax(url) {
+            axios.get(url).then(res => {
+                userGen.next(res.data)
+            })
+        }
+
+        let userGen = steps()
+        userGen.next()
+
+        function* steps() {
+            let users = yield ajax('https://api.github.com/users')
+            console.log(users)
+            let firstUser = yield ajax(`https://api.github.com/users/${users[0].login}`)
+            console.log(firstUser)
+            let followers = yield ajax(firstUser.followers_url)
+            console.log(followers)
+        }
+    </script>
+</body>
+</html>
