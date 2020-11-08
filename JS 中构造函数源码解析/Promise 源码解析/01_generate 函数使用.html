@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.2.3/jquery.js"></script>
+    <script>
+        function task(url, type = 'GET', data = '', dataType = 'json') {
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    type,
+                    data,
+                    dataType,
+                    url,
+                    success: (res) => {
+                        resolve(res);
+                        g.next(res);
+                    },
+                    err: (err) => {
+                        reject(err);
+                    }
+                })
+            });
+        }
+
+        function *gen(url) {
+            console.log(111)
+            let result = '';
+            result = yield task(url);
+            console.log(result);
+            let userName = result[0].login;
+            result = yield task(`https://api.github.com/users/${userName}/repos`);
+            console.log(result);
+        }
+
+        let g = gen('https://api.github.com/users');
+        g.next();
+    </script>
+</body>
+</html>

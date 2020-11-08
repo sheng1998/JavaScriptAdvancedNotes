@@ -8,8 +8,14 @@ Promise 函数具有两大特点：
     * pedding -> fulfilled
     * pedding -> rejected
 
+##### Promise 总结
+* Promise 是一个构造函数，里面有两个参数：resolve 表示成功状态，reject 表示失败状态
+* then 里面回调函数的参数就是上面一个 resolve 或者 reject 的参数内容，或者是上一个 then 中的返回值。
+* 如果上一个 then 执行了错误的回调函数（即 then 中的第二个参数被执行），下一个 then 还是执行成功的回调函数，除非在上一个 then 中的任意一个回调函数中执行过程中出现了错误，才会执行下一个 then 的错误回调函数。
+* Promise 会立即执行回调函数。
+
 #### Promise.prototype.then()
-该方法接收两个参数，每个参数的值都是函数，第二个参数为可选参数。then方法的第一个参数是resolved状态的回调函数，第二个参数（可选）是rejected状态的回调函数。
+该方法接收两个参数，每个参数的值都是函数，第二个参数为可选参数。then方法的第一个参数是resolved状态的回调函数，第二个参数（可选）是rejected状态的回调函数。then方法返回的是一个新的Promise实例（注意，不是原来那个Promise实例）。因此可以采用链式写法，即then方法后面再调用另一个then方法。
 then 方法可以链式调用。
 ```javascript
 usersPromise.then(
