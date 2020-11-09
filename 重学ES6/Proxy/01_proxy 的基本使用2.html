@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name: 'sheng',
+            age: 20,
+            sex: 1 // 0：保密，1：男，2：女
+        }
+
+        obj = new Proxy(obj, {
+            get(target, key) {
+                console.log(`获取了对象属性 ${key} 的属性值, 它的值为 ${target[key]}`)
+                if(key === 'sex') {
+                    return target[key] === 0 ? '保密' : (target[key] === 1 ? '男' : '女')
+                }
+                if(typeof target[key] === 'string') {
+                    return target[key].toUpperCase()
+                } else {
+                    return target[key]
+                }
+                
+            },
+            set(target, key, value) {
+                if(key === 'name') {
+                    throw new Error(`禁止修改对象属性 name 的属性值`)
+                } else if(key === 'sex') {
+                    if(typeof value !== 'number' || value > 2 || value < 0) {
+                        console.error('sex 的值必须为 0-2 之间的数值')
+                    } else {
+                        target[key] = value
+                    }
+                } else {
+                    console.log(`将对象的 ${key} 属性属性值设置为 ${value}`)
+                    target[key] = value
+                }
+            }
+        })
+        console.log(obj.name)
+        // 获取了对象属性 name 的属性值, 它的值为 sheng
+        // SHENG
+
+        obj.age = 22
+        // 将对象的 age 属性属性值设置为 22
+
+        console.log(obj.sex)
+        // 获取了对象属性 sex 的属性值, 它的值为 1
+        // 男
+
+        obj.sex = '3'
+        // sex 的值必须为 0-2 之间的数值
+
+        obj.name = 'xiaozhuang'
+        // Uncaught Error: 禁止修改对象属性 name 的属性值
+    </script>
+</body>
+</html>

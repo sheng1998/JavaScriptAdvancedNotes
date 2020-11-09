@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name: 'sheng',
+            age: 20
+        }
+
+        obj = new Proxy(obj, {
+            get(target, key) {
+                if(typeof target[key] === 'string') {
+                    return target[key].toUpperCase()
+                } else {
+                    return target[key]
+                }
+                
+            },
+            set(target, key, value) {
+                if(key === 'name') {
+                    throw new Error(`禁止修改对象属性 name 的属性值`)
+                } else {
+                    console.log(`将对象的 ${key} 属性属性值设置为 ${value}`)
+                    target[key] = value
+                }
+            }
+        })
+        console.log(obj.name) // SHENG
+        obj.name = 'xiaozhuang' // Uncaught Error: 禁止修改对象属性 name 的属性值
+    </script>
+</body>
+</html>
