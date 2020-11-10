@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let obj = {
+            name: 'sheng',
+            age: 20
+        }
+        // Map 转为对象
+        function objectToMap(obj) {
+            // return new Map(Object.entries(obj)) // 方法 1
+            let map = new Map()
+            for (let key in obj) {
+                map.set(key, obj[key])
+            }
+            return map
+        }
+
+        console.log(objectToMap(obj))
+    </script>
+</body>
+
+</html>

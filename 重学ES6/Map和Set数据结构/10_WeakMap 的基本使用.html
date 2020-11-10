@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let jelly = {name: 'jelly'}
+        let miffy = {name: 'miffy'}
+
+        let weakMap = new WeakMap([[jelly, 10]]) // 键必须为对象
+        console.log(weakMap)
+        console.log(weakMap.size) // undefined (没有 size 属性，不可以遍历)
+
+        // WeakMap 没有 clear() 方法
+        // weakMap.clear() // Uncaught TypeError: weakMap.clear is not a function
+
+        // 只有四个 Map 中的方法， get()、set()、has()、delete()
+        console.log(weakMap.get(jelly)) // 10
+        weakMap.set(miffy, 20)
+        console.log(weakMap) // WeakMap {{…} => 10, {…} => 20}
+        console.log(weakMap.has(jelly)) // true
+        weakMap.delete(miffy)
+        console.log(weakMap) // WeakMap {{…} => 10}
+    </script>
+</body>
+</html>

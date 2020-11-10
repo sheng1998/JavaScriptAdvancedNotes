@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [
+            [null,1], ['null', 1],
+            [undefined, 2], ['undefined', 2],
+            [[1,2], 1], [1, 2], ['1', 1],
+            [Symbol(2020), 2], [Symbol(2020), 3]
+        ]
+        let map = new Map(arr) 
+        console.log(map) // {null => 1, "null" => 1, undefined => 2, "undefined" => 2, Array(2) => 1, …}
+
+        // Map 转为对象
+        function mapToObject(map) {
+            let obj = {}
+            for (const [key, value] of map) {
+                obj[key] = value
+            }
+            return obj
+        }
+        console.log(mapToObject(map)) // {1: 1, null: 1, undefined: 2, 1,2: 1, Symbol(2020): 2, Symbol(2020): 3}
+    </script>
+</body>
+</html>

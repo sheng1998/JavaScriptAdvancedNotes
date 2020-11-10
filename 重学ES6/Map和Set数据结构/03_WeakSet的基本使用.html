@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let jelly = {name: 'jelly', age: 20}
+        let mary = {name: 'mary', age: 22}
+        let sheng = {name: 'sheng', age: 22}
+
+        let peopleWeakSet = new WeakSet([jelly, mary])
+
+        peopleWeakSet.add(sheng)
+        console.log(peopleWeakSet) // WeakSet {{…}, {…}, {…}}
+
+        console.log(peopleWeakSet.has({name: 'mary', age: 22})) // false
+        console.log(peopleWeakSet.has(mary)) // true
+
+        let sheng2 = {name: 'sheng2', age: 22}
+        peopleWeakSet.add(sheng2)
+        console.log(peopleWeakSet) // WeakSet {{…}, {…}, {…}, {…}}
+        peopleWeakSet.delete(sheng2)
+        console.log(peopleWeakSet) // WeakSet {{…}, {…}, {…}}
+
+        // WeakSet 的成员只能是对象，而不能是其他类型的值。
+        // peopleWeakSet.add('sheng') // Uncaught TypeError: Invalid value used in weak set
+
+        // WeakSet 没有size属性
+        console.log(peopleWeakSet.size) //undefined
+
+        // WeakSet 没有size属性，没有办法遍历它的成员。
+        // peopleWeakSet.forEach((item) => {console.log(item)}) // Uncaught TypeError: peopleWeakSet.forEach is not a function
+        // for (const key of peopleWeakSet) {} // Uncaught TypeError: peopleWeakSet is not iterable
+
+        // WeakSet 没有 clear() 方法，因为 WeakSet 会自动删除元素
+        // peopleWeakSet.clear() // Uncaught TypeError: peopleWeakSet.clear is not a function
+        jelly = null
+        setTimeout(() => {
+            console.log(peopleWeakSet) // WeakSet {{…}, {…}}
+        }, 2000);
+    </script>
+</body>
+</html>
