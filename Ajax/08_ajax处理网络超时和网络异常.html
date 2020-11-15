@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="fun()">点击按钮</button>
+
+    <script>
+        function fun() {
+            let xhr = new XMLHttpRequest()
+
+            // 超时设置 2000ms
+            xhr.timeout = 2000
+            // 超时回调函数
+            xhr.ontimeout = function (err) {
+                console.log(err)
+                // alert('网络异常，请刷新或稍后再试！！')
+            }
+            // 网络异常回调函数
+            xhr.onerror = function() {
+                alert('你的网络似乎出了一些问题，请检查网络设置！！')
+            }
+
+            xhr.open('GET', 'http://127.0.0.1:8000/delay')
+            xhr.send()
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.responseText)
+                } else {
+                    console.log(xhr)
+                }
+            }
+        }
+    </script>
+</body>
+</html>

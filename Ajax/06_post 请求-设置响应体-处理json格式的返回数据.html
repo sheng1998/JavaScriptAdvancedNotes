@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="fun()">发起 post 请求</button>
+        <div id="res"></div>
+    </div>
+    <script>
+        var url = 'http://127.0.0.1:8000/sever2'; 
+        function fun() {
+            var xhr;
+            if(window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            } else {
+                // 兼容 IE5、IE6
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xhr.open('POST', url, true);
+            // 设置响应体数据类型
+            xhr.responseType = 'json';
+
+            xhr.send();
+
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState == 4 && xhr.status === 200) {
+                    console.log(xhr.response);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

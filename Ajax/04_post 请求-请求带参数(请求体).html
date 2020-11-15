@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="fun()">发起 post 请求</button>
+        <div id="res"></div>
+    </div>
+    <script>
+        var url = 'http://127.0.0.1:8000/sever1'; 
+        function fun() {
+            // 1. 创建对象
+            var xhr;
+            if(window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            } else {
+                // 兼容 IE5、IE6
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            // 2. 初始化，设置请求方法和请求路径
+            xhr.open('POST', url, true);
+
+            // 3. 发送请求(带请求体)
+            xhr.send('a=1&b=2');
+
+            // 4. 监听AJAX状态改变
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState == 4 && xhr.status === 200) {
+                    // 5. 处理服务器响应数据
+                    console.log(xhr.responseText);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

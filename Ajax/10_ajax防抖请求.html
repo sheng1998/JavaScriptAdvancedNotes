@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="ajax()">点击发送请求</button>
+    </div>
+
+    <script>
+        let xhr
+        let isSending = false; // 判断是否正在发送请求
+        // ajax 请求函数
+        function ajax() {
+            if(isSending) {
+                xhr.abort()
+            }
+            xhr = new XMLHttpRequest()
+            isSending = true
+            xhr.open('GET', 'http://127.0.0.1:8000/ie')
+            xhr.send()
+
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState === 4) {
+                    isSending = false
+                    if(xhr.status === 200) {
+                        console.log(xhr.responseText)
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

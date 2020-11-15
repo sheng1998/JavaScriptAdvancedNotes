@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2 class="page-header">fetch发送AJAX请求</h2>
+        <button class="btn btn-primary">发送GET请求</button>
+        <button class="btn btn-danger">发送POST请求</button>
+    </div>
+
+    <script>
+        let btn = document.getElementsByClassName('btn')
+
+        btn[0].onclick = function() {
+            fetch('http://127.0.0.1:8000/fetch-sever?name=sheng', {
+                method: 'GET',
+                headers: {
+                    name: 'sheng'
+                }
+            }).then(data => {
+                console.log(data)
+                return data.json()
+            }).then(data => {
+                console.log(data)
+            })
+        }
+
+        btn[1].onclick = function() {
+            fetch('http://127.0.0.1:8000/fetch-sever', {
+                method: 'POST',
+                headers: {
+                    name: 'sheng'
+                },
+                body: 'name=sheng&age=22'
+            }).then(data => {
+                console.log(data)
+                return data.json()
+            }).then(data => {
+                console.log(data)
+            })
+        }
+    </script>
+</body>
+</html>

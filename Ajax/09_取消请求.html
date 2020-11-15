@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="fun1()">点击发送请求</button>
+        <button onclick="fun2()">点击取消请求</button>
+    </div>
+
+    <script>
+        let xhr;
+        function fun1() {
+            xhr = new XMLHttpRequest()
+            xhr.open('GET', 'http://127.0.0.1:8000/delay')
+            xhr.send()
+        }
+
+        function fun2() {
+            xhr.abort()
+        }
+    </script>
+</body>
+</html>
