@@ -37,8 +37,13 @@ function ajax(option) {
     if(option.data && option.type.toUpperCase() === 'GET') {
         // 如果 url 后面已经附带参数就不用加 '?', 直接加上一个连接符 '&'
         if(option.url.split('?')[1]) {
+            // url 已经携带参数，用 & 连接
             option.url += '&' + option.data;
+        } else if(url.indexOf('?') === url.length-1) {
+            // url 末尾为 ? 就直接拼接
+            option.url += option.data;
         } else {
+             // url 未携带参数，也不含有 ? 号，就需要用 ? 连接
             option.url += '?' + option.data;
         }
     }
