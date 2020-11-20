@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    a 和 b 是同域的：http://127.0.0.1:8000<br />
+    c 是独立域的：http://127.0.0.1:8001<br />
+    <h1>AAAAA</h1>
+    <iframe src="http://127.0.0.1:8001/c.html#iloveyou" id="iframe" frameborder="0"></iframe>
+
+    <script>
+        window.onhashchange = function() {
+            console.log(location.hash)
+        }
+    </script>
+</body>
+</html>

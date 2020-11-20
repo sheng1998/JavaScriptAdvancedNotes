@@ -9,7 +9,6 @@ yarn-error.log*
 selenium-debug.log
 /.history/
 /.VSCodeCounter/
-跨域请求/
 
 # Editor directories and files
 .idea

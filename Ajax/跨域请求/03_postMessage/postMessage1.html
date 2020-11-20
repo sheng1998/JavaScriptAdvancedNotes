@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>postMessage1</title>
+</head>
+<body>
+    <h1>postMessage1</h1>
+    <iframe src="http://127.0.0.1:8001/postMessage2.html" frameborder="0" id="frame" onload="fun()"></iframe>
+    <script>
+        function fun() {
+            let frame = document.getElementById('frame')
+            // 给页面2发送消息
+            frame.contentWindow.postMessage('我爱你', 'http://127.0.0.1:8001')
+            window.onmessage = function(e) {
+                console.log(e.data)
+            }
+        }
+    </script>
+</body>
+</html>

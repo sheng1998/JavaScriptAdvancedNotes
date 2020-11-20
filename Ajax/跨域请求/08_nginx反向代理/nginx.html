@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>11111</h1>
+    <script>
+        let xhr = new XMLHttpRequest()
+        document.cookie = 'name=sheng'
+        xhr.withCredentials = true
+        xhr.open('GET', 'http://127.0.0.1:8000/myapi/server')
+        xhr.setRequestHeader('name', 'sheng')
+        xhr.send()
+        xhr.responseType = 'json'
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState === 4 && xhr.status === 200) {
+                console.log(xhr.response)
+                console.log('xhr.getResponseHeader("myname"): ', xhr.getResponseHeader('myname'))
+            }
+        }
+    </script>
+</body>
+</html>

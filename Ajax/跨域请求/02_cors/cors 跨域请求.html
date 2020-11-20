@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="ajax()">点我发请求</button>
+    </div>
+    <script>
+        function ajax() {
+            let xhr = new XMLHttpRequest()
+            document.cookie = 'name=sheng'
+            xhr.withCredentials = true
+            xhr.open('GET', `http://127.0.0.1:8000/cors-sever`, true)
+            xhr.setRequestHeader('name', 'sheng')
+            // xhr.setRequestHeader('Content-Type', 'application/json')
+            xhr.send()
+            xhr.responseType = 'json'
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState === 4 && xhr.status === 200) {
+                    console.log('xhr.getResponseHeader("name"): ', xhr.getResponseHeader('myname'))
+                    console.log('xhr.getResponseHeader("Date"): ', xhr.getResponseHeader('Date'))
+                    // console.log('xhr.getResponseHeader("ETag"): ', xhr.getResponseHeader('ETag'))
+                    console.log('xhr.response: ', xhr.response)
+                }
+            }
+        }
+        ajax()
+    </script>
+</body>
+</html>

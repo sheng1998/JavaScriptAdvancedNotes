@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    a 和 b 是同域的：http://127.0.0.1:8000<br />
+    c 是独立域的：http://127.0.0.1:80001<br />
+    a 获取 c 的数据<br />
+    a 先引用 c ，c 把值放到 window.name, 把 a 引用的地址改到 b<br />
+    <h1>AAAAAAAAAAAAAAA</h1>
+    <iframe src="http://127.0.0.1:8001/c.html" id="iframe" frameborder="0" width="600px" onload="fun()"></iframe>
+
+    <script>
+        let first = true
+        function fun() {
+            if (first) {
+                let iframe = document.getElementById('iframe')
+                iframe.src = 'http://127.0.0.1:8000/b.html'
+                first = false
+            } else {
+                console.log(JSON.parse(iframe.contentWindow.name))
+            }
+        }
+    </script>
+</body>
+</html>
