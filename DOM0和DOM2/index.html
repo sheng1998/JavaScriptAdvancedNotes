@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+
+    <script>
+        let button = document.getElementsByTagName('button')
+        button[0].onclick = fun1
+        button[0].onclick = fun2
+        button[0].onclick = fun3
+        // 点击按钮1只会输出 3
+
+        button[1].addEventListener('click', fun1)
+        button[1].addEventListener('click', fun2)
+        button[1].addEventListener('click', fun2)
+        button[1].addEventListener('click', fun3)
+        button[1].addEventListener('click', fun4)
+        button[1].addEventListener('click', fun4)
+        // 点击按钮2 会依次输出1 2 3 4
+
+        function fun1() {
+            console.log(1)
+        }
+        function fun2() {
+            console.log(2)
+        }
+        function fun3() {
+            console.log(3)
+        }
+        function fun4() {
+            console.log(4)
+        }
+    </script>
+</body>
+</html>

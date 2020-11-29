@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>点击我触发事件</button>
+
+    <script src="./subscribe(升级版).js"></script>
+    <script>
+        let button = document.getElementsByTagName('button')[0]
+        let pond = new Sub()
+
+        button.onclick = function(ev) {
+            pond.emit('click')
+        }
+
+        function fun1() {
+            console.log(1)
+        }
+        function fun2() {
+            console.log(2)
+            pond.off('click', fun1)
+        }
+        pond.on('click', fun1)
+        pond.on('click', fun2)
+        function fun3() {
+            console.log(3)
+        }
+        function fun4() {
+            console.log(4)
+        }
+        function fun5() {
+            console.log(5)
+        }
+        pond.on('click', fun3)
+        pond.on('click', fun4)
+        pond.on('click', fun5)
+    </script>
+</body>
+</html>
